@@ -21,23 +21,14 @@
 
 # Sparrow DNP
 
-Sparrow-DNP provides wrapper and adapter classes to the java library of [Opendnp3](https://github.com/dnp3/opendnp3).
+Sparrow-DNP provides wrapper and adapter classes for the java library of the [Opendnp3](https://github.com/dnp3/opendnp3) in order to configure by XML format. 
 
 ### Requirements
 
   * [Opendnp3](https://github.com/dnp3/opendnp3)
   * Maven
   * JDK 9 or above
-
-#### Key Features:
-
-  * XML config file,
-  * Save and load, 
-
-
-### Full History
-
-
+  
 License
 =============
 
