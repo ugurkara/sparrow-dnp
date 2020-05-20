@@ -20,16 +20,15 @@
 -->
 
 # Sparrow DNP
+=============
 
-Apache NetBeans is an open source development environment, tooling platform, and application framework.
+Sparrow-DNP provides wrapper and adapter classes to the java library of [Opendnp3](https://github.com/dnp3/opendnp3).
 
 ### Requirements
 
-  * Git
-  * Ant 1.9.9 or above
-  * JDK 8 or 11 (to build NetBeans)
-  * JDK 9 or above (to run NetBeans)
-  * MinGW (optional), to build Windows Launchers
+  * [Opendnp3](https://github.com/dnp3/opendnp3)
+  * Maven
+  * JDK 9 or above
 
 #### Notes:
 
