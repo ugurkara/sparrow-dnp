@@ -20,7 +20,6 @@
 -->
 
 # Sparrow DNP
-=============
 
 Sparrow-DNP provides wrapper and adapter classes to the java library of [Opendnp3](https://github.com/dnp3/opendnp3).
 
@@ -32,9 +31,8 @@ Sparrow-DNP provides wrapper and adapter classes to the java library of [Opendnp
 
 #### Key Features:
 
-  * [Opendnp3](https://github.com/dnp3/opendnp3)
-  * Maven
-  * JDK 9 or above
+  * XML config file,
+  * Save and load, 
 
 
 ### Full History
