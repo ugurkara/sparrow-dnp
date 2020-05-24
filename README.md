@@ -103,13 +103,25 @@ To update your `.gitignore` files at any time, simply run:
 
 ### TCP Server
 ```
-
+<dnp-tcp-server>
+    <name>Channel3</name>
+    <host>127.0.0.1</host>
+    <port>20000</port>
+</dnp-tcp-server>
 ```
 ### TCP Client
 ```
-ls | list       list all available files
-u | update      update all available gitignore files
-g | generate    generate gitignore files
+<dnp-tcp-client>
+    <name>Channel1</name>
+    <host>127.0.0.1</host>
+    <port>20000</port>
+    <adapter>0.0.0.0</adapter>
+    <reconnect>
+        <maxRetryDelay>PT1M</maxRetryDelay>
+        <minRetryDelay>PT1S</minRetryDelay>
+        <reconnectDelay>PT0S</reconnectDelay>
+    </reconnect>
+</dnp-tcp-client>
 ```
 ### Serial
 ```
