@@ -120,7 +120,7 @@ SerialChannelConfig config=SerialChannelConfig.loadFromDefault();
 
 ### Connections
 
-Connections stands for channels. TcpServer, TcpClient, Serials are connections types which are able to defined by XML as follows.
+Connections stands for channels. TcpServer, TcpClient, Serials are connections types which are able to be defined by XML as follows.
 
 ### TCP Server
 
