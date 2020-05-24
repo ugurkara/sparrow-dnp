@@ -107,6 +107,10 @@ To update your `.gitignore` files at any time, simply run:
     <name>Channel3</name>
     <host>127.0.0.1</host>
     <port>20000</port>
+    <slave>
+    </slave>
+    <master>
+    </master>
 </dnp-tcp-server>
 ```
 ### TCP Client
@@ -121,6 +125,10 @@ To update your `.gitignore` files at any time, simply run:
         <minRetryDelay>PT1S</minRetryDelay>
         <reconnectDelay>PT0S</reconnectDelay>
     </reconnect>
+    <slave>
+    </slave>
+    <master>
+    </master>
 </dnp-tcp-client>
 ```
 ### Serial
@@ -138,6 +146,10 @@ To update your `.gitignore` files at any time, simply run:
         <minRetryDelay>PT1S</minRetryDelay>
         <reconnectDelay>PT0S</reconnectDelay>
     </reconnect>
+    <slave>
+    </slave>
+    <master>
+    </master>
 </dnp-serial>
 ```
 ### Masters
