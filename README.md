@@ -26,6 +26,7 @@ Sparrow-DNP provides wrapper and adapter classes for the java library of the [Op
 ### Requirements
 
   * [Opendnp3](https://github.com/dnp3/opendnp3)
+  * JAXB
   
   Include
 -------
