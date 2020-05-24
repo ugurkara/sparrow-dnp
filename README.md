@@ -106,6 +106,7 @@ $ joe u
 To update your `.gitignore` files at any time, simply run:
 
 ### TCP Server
+
 ```
 <dnp-tcp-server>
     <name>Channel3</name>
@@ -118,6 +119,7 @@ To update your `.gitignore` files at any time, simply run:
 </dnp-tcp-server>
 ```
 ### TCP Client
+
 ```
 <dnp-tcp-client>
     <name>Channel1</name>
@@ -136,6 +138,7 @@ To update your `.gitignore` files at any time, simply run:
 </dnp-tcp-client>
 ```
 ### Serial
+
 ```
 <dnp-serial>
     <name>Channel1</name>
@@ -157,6 +160,7 @@ To update your `.gitignore` files at any time, simply run:
 </dnp-serial>
 ```
 ### Masters
+
 ```
     <master>
         <name>Master1</name>
@@ -212,6 +216,7 @@ To update your `.gitignore` files at any time, simply run:
     </master>
 ```
 ### Slaves(Outstations)
+
 ```
     <slave>
         <name>Outstation4</name>
@@ -240,12 +245,10 @@ To update your `.gitignore` files at any time, simply run:
     </slave>
 
 ```
-### Variables
-```
-ls | list       list all available files
-u | update      update all available gitignore files
-g | generate    generate gitignore files
-```
+### MemoryUnits and Variables
+
+Memory Units are homogeneous areas which keeps variables. Variables stands for primitive data that is relative to protocol. 
+
 ### Analog Inputs
 ```
         <memoryUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="analogInputs">
