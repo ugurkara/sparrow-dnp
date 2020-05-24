@@ -29,7 +29,7 @@ Sparrow-DNP provides wrapper and adapter classes for the java library of the [Op
   
   Include
 -------
-JFreePDF is published to the Central Repository. You can include it in your projects with the following dependency:
+[Opendnp3](https://github.com/dnp3/opendnp3) is not published to the Central Repository. We need to install it into our Maven Local repository in order to use it as a project dependencies. You can include it in your projects with the following dependency
 
         <dependency>
             <groupId>com.automatak.dnp3</groupId>
@@ -38,9 +38,7 @@ JFreePDF is published to the Central Repository. You can include it in your proj
         </dependency>
 
 
-JFreePDF defines the module name `org.jfree.pdf`.
-
-If you are using Java 8, an earlier version of this library (OrsonPDF) can be used instead:
+If you are using Java 9 or newer
 
 <dependency>
             <groupId>javax.xml.bind</groupId>
@@ -66,7 +64,7 @@ If you are using Java 8, an earlier version of this library (OrsonPDF) can be us
 
 Build
 -----
-You can build JFreePDF from sources using Maven:
+You can build Sparrow-DNP from sources using Maven:
 
     mvn clean install
 
