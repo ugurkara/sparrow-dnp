@@ -74,3 +74,27 @@ License
 =============
 
 Licensed under the terms of the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0.html).
+
+
+## Usage
+
+### Commands:
+
+```
+ls | list       list all available files
+u | update      update all available gitignore files
+g | generate    generate gitignore files
+```
+
+### Basic usage
+
+```bash
+$ joe g java    # outputs .gitignore file for java to stdout
+```
+
+To update your `.gitignore` files at any time, simply run:
+
+```bash
+$ joe u
+```
+
