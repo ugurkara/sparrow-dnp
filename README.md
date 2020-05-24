@@ -78,7 +78,7 @@ Licensed under the terms of the [Apache 2.0 License](http://www.apache.org/licen
 
 # Usage
 
-## XML Configuration:
+### XML Configuration:
 
 ```
 ls | list       list all available files
@@ -86,7 +86,7 @@ u | update      update all available gitignore files
 g | generate    generate gitignore files
 ```
 
-## Loading Configuration
+### Loading Configuration
 
 ```bash
 $ joe g java    # outputs .gitignore file for java to stdout
@@ -97,7 +97,7 @@ To update your `.gitignore` files at any time, simply run:
 ```bash
 $ joe u
 ```
-## Connections
+### Connections
 
 To update your `.gitignore` files at any time, simply run:
 
@@ -119,13 +119,13 @@ ls | list       list all available files
 u | update      update all available gitignore files
 g | generate    generate gitignore files
 ```
-## Masters
+### Masters
 ```
 ls | list       list all available files
 u | update      update all available gitignore files
 g | generate    generate gitignore files
 ```
-## Slaves(Outstations)
+### Slaves(Outstations)
 ```
 ls | list       list all available files
 u | update      update all available gitignore files
