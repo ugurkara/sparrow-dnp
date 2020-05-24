@@ -103,18 +103,17 @@ Copyright (c) 2013 - 2020 Automatak LLC
 
 ### Loading Configuration
 
-Load client channel config
-
+Load client channel config [https://github.com/ugurkara/sparrow-dnp/blob/master/src/main/resources/com/sparrow/dnp/DnpTcpClient.xml]
 ```
 TcpClientChannelConfig config=TcpClientChannelConfig.loadFromDefault();
 ```
 
-Load server channel config
+Load server channel config [https://github.com/ugurkara/sparrow-dnp/blob/master/src/main/resources/com/sparrow/dnp/DnpTcpServer.xml]
 ```
 TcpServerChannelConfig config=TcpServerChannelConfig.loadFromDefault();
 ```
 
-Load serial channel config
+Load serial channel config [https://github.com/ugurkara/sparrow-dnp/blob/master/src/main/resources/com/sparrow/dnp/DnpSerial.xml]
 ```
 SerialChannelConfig config=SerialChannelConfig.loadFromDefault();
 ```
