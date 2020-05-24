@@ -75,7 +75,7 @@ License
 
 Licensed under the terms of the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0.html).
 
-Copyright (c) 2020 KR ENDÜSTRİYEL BİLIŞİM LTD. ŞTİ.
+Copyright (c)      - 2020 KR Endüstriyel Bilişim Ltd. Şti.
 
 Copyright (c) 2013 - 2020 Automatak LLC
 
