@@ -75,7 +75,7 @@ License
 
 Licensed under the terms of the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0.html).
 
-Copyright (c) 2020 KR ENDÜSTRIYEL BILISIM
+Copyright (c) 2020 KR ENDÜSTRİYEL BİLIŞİM LTD. ŞTİ.
 
 Copyright (c) 2013 - 2020 Automatak LLC
 
@@ -207,6 +207,8 @@ To update your `.gitignore` files at any time, simply run:
             <class2>true</class2>
             <class3>true</class3>
         </unsolClassMask>
+        <memoryUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="analogInputs">
+        </memoryUnit>
     </master>
 ```
 ### Slaves(Outstations)
@@ -233,6 +235,8 @@ To update your `.gitignore` files at any time, simply run:
         <selectTimeout>PT10S</selectTimeout>
         <solicitedConfirmTimeout>PT5S</solicitedConfirmTimeout>
         <unsolicitedConfirmTimeout>PT5S</unsolicitedConfirmTimeout>
+        <memoryUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="analogInputs">
+        </memoryUnit>
     </slave>
 
 ```
@@ -244,43 +248,97 @@ g | generate    generate gitignore files
 ```
 ### Analog Inputs
 ```
-ls | list       list all available files
-u | update      update all available gitignore files
-g | generate    generate gitignore files
+        <memoryUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="analogInputs">
+            <eventBufferSize>0</eventBufferSize>
+            <analogInput>
+            </analogInput>
+        </memoryUnit>
 ```
 ### Analog Outputs
 ```
-ls | list       list all available files
-u | update      update all available gitignore files
-g | generate    generate gitignore files
+    <memoryUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="analogOutputs">
+            <eventBufferSize>0</eventBufferSize>
+            <analogOutput>
+                <index>0</index>
+                <pointClass>Class1</pointClass>
+                <commandConfig>
+                    <dataType>FLOAT</dataType>
+                    <operateType>DirectOperate</operateType>
+                </commandConfig>
+                <deadband>0.0</deadband>
+                <eventVariation>Group42Var1</eventVariation>
+                <selectionRequired>false</selectionRequired>
+                <staticVariation>Group40Var1</staticVariation>
+            </analogOutput>
+    </memoryUnit>
 ```
 ### Digital Inputs
 ```
-ls | list       list all available files
-u | update      update all available gitignore files
-g | generate    generate gitignore files
+    <memoryUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="digitalInputs">
+            <eventBufferSize>0</eventBufferSize>
+            <digitalInput>
+                <index>0</index>
+                <pointClass>Class1</pointClass>
+                <eventVariation>Group2Var1</eventVariation>
+                <staticVariation>Group1Var2</staticVariation>
+            </digitalInput>
+    </memoryUnit>
 ```
 ### Digital Outputs
 ```
-ls | list       list all available files
-u | update      update all available gitignore files
-g | generate    generate gitignore files
+    <memoryUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="digitalOutputs">
+            <eventBufferSize>0</eventBufferSize>
+            <digitalOutput>
+                <index>0</index>
+                <pointClass>Class1</pointClass>
+                <commandConfig>
+                    <controlCode>PULSE_ON</controlCode>
+                    <count>0</count>
+                    <offTime>PT0.5S</offTime>
+                    <onTime>PT0.5S</onTime>
+                    <operateType>DirectOperate</operateType>
+                </commandConfig>
+                <eventVariation>Group11Var1</eventVariation>
+                <selectionRequired>false</selectionRequired>
+                <staticVariation>Group10Var2</staticVariation>
+            </digitalOutput>
+    </memoryUnit>
 ```
 ### Counters
 ```
-ls | list       list all available files
-u | update      update all available gitignore files
-g | generate    generate gitignore files
+    <memoryUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="counters">
+            <eventBufferSize>0</eventBufferSize>
+            <counter>
+                <index>0</index>
+                <pointClass>Class1</pointClass>
+                <deadband>0</deadband>
+                <eventVariation>Group22Var1</eventVariation>
+                <staticVariation>Group20Var1</staticVariation>
+            </counter>
+    </memoryUnit>
 ```
 ### Frozen Counters
 ```
-ls | list       list all available files
-u | update      update all available gitignore files
-g | generate    generate gitignore files
+    <memoryUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="frozenCounters">
+            <eventBufferSize>0</eventBufferSize>
+            <frozenCounter>
+                <index>20</index>
+                <pointClass>Class1</pointClass>
+                <deadband>0</deadband>
+                <eventVariation>Group23Var1</eventVariation>
+                <staticVariation>Group21Var1</staticVariation>
+            </frozenCounter>
+    </memoryUnit>
 ```
 ### Double Digitals
 ```
-ls | list       list all available files
-u | update      update all available gitignore files
-g | generate    generate gitignore files
+    <memoryUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="doubleDigitals">
+            <eventBufferSize>0</eventBufferSize>
+            <doubleDigital>
+                <index>0</index>
+                <pointClass>Class1</pointClass>
+                <eventVariation>Group4Var1</eventVariation>
+                <staticVariation>Group3Var2</staticVariation>
+            </doubleDigital>
+    </memoryUnit>
 ```
