@@ -103,7 +103,8 @@ Copyright (c) 2013 - 2020 Automatak LLC
 
 ### Loading Configuration
 
-[Load client channel config] (https://github.com/ugurkara/sparrow-dnp/blob/master/src/main/resources/com/sparrow/dnp/DnpTcpClient.xml)
+[Opendnp3](https://github.com/dnp3/opendnp3)
+[Load client channel config](https://github.com/ugurkara/sparrow-dnp/blob/master/src/main/resources/com/sparrow/dnp/DnpTcpClient.xml)
 ```
 TcpClientChannelConfig config=TcpClientChannelConfig.loadFromDefault();
 ```
