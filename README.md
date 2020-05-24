@@ -31,22 +31,38 @@ Sparrow-DNP provides wrapper and adapter classes for the java library of the [Op
 -------
 JFreePDF is published to the Central Repository. You can include it in your projects with the following dependency:
 
-    <dependency>
-        <groupId>org.jfree</groupId>
-        <artifactId>org.jfree.pdf</artifactId>
-        <version>2.0</version>
-    </dependency>
+        <dependency>
+            <groupId>com.automatak.dnp3</groupId>
+            <artifactId>opendnp3-bindings</artifactId>
+            <version>2.4.1-SNAPSHOT</version>
+        </dependency>
+
 
 JFreePDF defines the module name `org.jfree.pdf`.
 
 If you are using Java 8, an earlier version of this library (OrsonPDF) can be used instead:
 
-    <!-- https://mvnrepository.com/artifact/com.orsonpdf/orsonpdf -->
-    <dependency>
-        <groupId>com.orsonpdf</groupId>
-        <artifactId>orsonpdf</artifactId>
-        <version>1.9</version>
-    </dependency>
+<dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.0</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>2.3.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <version>1.1.1</version>
+        </dependency>
 
 Build
 -----
