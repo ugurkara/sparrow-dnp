@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2020 KR INDUSTRIAL IT.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<actions>
+
+        <action>
+
+            <actionName>run</actionName>
+
+            <packagings>
+
+                <packaging>jar</packaging>
+
+            </packagings>
+
+            <goals>
+
+                <goal>process-classes</goal>
+
+                <goal>org.codehaus.mojo:exec-maven-plugin:1.5.0:exec</goal>
+
+            </goals>
+
+            <properties>
+
+                <exec.args>-Djava.library.path=/Users/ugurkara/java/opendnp3/install.mac/lib -classpath %classpath com.sparrow.dnp.example.MasterDemo_02</exec.args>
+
+                <exec.executable>java</exec.executable>
+
+            </properties>
+
+        </action>
+
+        <action>
+
+            <actionName>debug</actionName>
+
+            <packagings>
+
+                <packaging>jar</packaging>
+
+            </packagings>
+
+            <goals>
+
+                <goal>process-classes</goal>
+
+                <goal>org.codehaus.mojo:exec-maven-plugin:1.5.0:exec</goal>
+
+            </goals>
+
+            <properties>
+
+                <exec.args>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address} -Djava.library.path=/Users/ugurkara/java/opendnp3/install.mac/lib -classpath %classpath com.sparrow.dnp.example.MasterDemo_02</exec.args>
+
+                <exec.executable>java</exec.executable>
+
+                <jpda.listen>true</jpda.listen>
+
+            </properties>
+
+        </action>
+
+        <action>
+
+            <actionName>profile</actionName>
+
+            <packagings>
+
+                <packaging>jar</packaging>
+
+            </packagings>
+
+            <goals>
+
+                <goal>process-classes</goal>
+
+                <goal>org.codehaus.mojo:exec-maven-plugin:1.5.0:exec</goal>
+
+            </goals>
+
+            <properties>
+
+                <exec.args>-Djava.library.path=/Users/ugurkara/java/opendnp3/install.mac/lib -classpath %classpath com.sparrow.dnp.example.MasterDemo_02</exec.args>
+
+                <exec.executable>java</exec.executable>
+
+            </properties>
+
+        </action>
+
+        <action>
+
+            <actionName>CUSTOM-copy-alljars</actionName>
+
+            <displayName>copy-alljars</displayName>
+
+            <goals>
+
+                <goal>dependency:copy-dependencies</goal>
+
+            </goals>
+
+        </action>
+
+    </actions>
