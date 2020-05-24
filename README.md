@@ -98,6 +98,9 @@ To update your `.gitignore` files at any time, simply run:
 $ joe u
 ```
 ## Connections
+
+To update your `.gitignore` files at any time, simply run:
+
 ### TCP Server
 ```
 ls | list       list all available files
@@ -116,5 +119,63 @@ ls | list       list all available files
 u | update      update all available gitignore files
 g | generate    generate gitignore files
 ```
-
-
+## Masters
+```
+ls | list       list all available files
+u | update      update all available gitignore files
+g | generate    generate gitignore files
+```
+## Slaves(Outstations)
+```
+ls | list       list all available files
+u | update      update all available gitignore files
+g | generate    generate gitignore files
+```
+### Variables
+```
+ls | list       list all available files
+u | update      update all available gitignore files
+g | generate    generate gitignore files
+```
+### Analog Inputs
+```
+ls | list       list all available files
+u | update      update all available gitignore files
+g | generate    generate gitignore files
+```
+### Analog Outputs
+```
+ls | list       list all available files
+u | update      update all available gitignore files
+g | generate    generate gitignore files
+```
+### Digital Inputs
+```
+ls | list       list all available files
+u | update      update all available gitignore files
+g | generate    generate gitignore files
+```
+### Digital Outputs
+```
+ls | list       list all available files
+u | update      update all available gitignore files
+g | generate    generate gitignore files
+```
+### Counters
+```
+ls | list       list all available files
+u | update      update all available gitignore files
+g | generate    generate gitignore files
+```
+### Frozen Counters
+```
+ls | list       list all available files
+u | update      update all available gitignore files
+g | generate    generate gitignore files
+```
+### Double Digititals
+```
+ls | list       list all available files
+u | update      update all available gitignore files
+g | generate    generate gitignore files
+```
