@@ -40,7 +40,7 @@ Sparrow-DNP provides wrapper and adapter classes for the java library of the [Op
 
 If you are using Java 9 or newer
 
-<dependency>
+        <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
             <version>2.3.0</version>
