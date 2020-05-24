@@ -50,37 +50,27 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 
 @XmlRootElement(name = "dnp-tcp-client")
-
 public class TcpClientChannelConfig extends TcpChannelConfig {
 
 
 
     public static TcpClientChannelConfig loadFromXml(File file) throws JAXBException, FileNotFoundException {
-
         return loadFromXml(new FileInputStream(file));
-
     }
 
 
 
     public static TcpClientChannelConfig loadFromXml(String file) throws JAXBException, FileNotFoundException {
-
         return loadFromXml(new File(file));
-
     }
 
 
 
     public static TcpClientChannelConfig newInstance() {
 
-
-
         TcpClientChannelConfig config = new TcpClientChannelConfig();
-
         MasterDeviceConfig masterConfig = new MasterDeviceConfig();
-
         config.getMasters().add(masterConfig);
-
         return config;
 
     }
@@ -89,8 +79,7 @@ public class TcpClientChannelConfig extends TcpChannelConfig {
 
     public static TcpClientChannelConfig loadFromDefault() throws JAXBException {
 
-        InputStream is = TcpClientConnection.class.getResourceAsStream("resources/DnpTcpClient.xml");
-
+        InputStream is = TcpClientConnection.class.getResourceAsStream("DnpTcpClient.xml");
         return loadFromXml(is);
 
     }

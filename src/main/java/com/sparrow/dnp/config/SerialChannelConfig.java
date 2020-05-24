@@ -53,33 +53,23 @@ import javax.xml.bind.annotation.XmlType;
  */
 
 @XmlRootElement(name = "dnp-serial")
-
 @XmlType(propOrder = {"port", "baudRate", "dataBits", "parity", "stopBits", "flowControl", "channelRetry"})
-
 public class SerialChannelConfig extends BaseChannelConfig {
 
 
 
     private String port = "/dev/random";
-
     private int baudRate = 9600;
-
     private int dataBits = 8;
-
     private Parity parity = Parity.None;
-
     private int stopBits = 1;
-
     private FlowControl flowControl = FlowControl.None;
 
 
 
     @XmlElement
-
     public int getBaudRate() {
-
         return baudRate;
-
     }
 
 
@@ -87,9 +77,7 @@ public class SerialChannelConfig extends BaseChannelConfig {
     public void setBaudRate(Integer newValue) {
 
         Integer oldValue = this.baudRate;
-
         this.baudRate = newValue;
-
         this.pcs.firePropertyChange("baudRate", oldValue, newValue);
 
     }
@@ -97,11 +85,8 @@ public class SerialChannelConfig extends BaseChannelConfig {
 
 
     @XmlElement
-
     public Integer getDataBits() {
-
         return dataBits;
-
     }
 
 
@@ -109,9 +94,7 @@ public class SerialChannelConfig extends BaseChannelConfig {
     public void setDataBits(Integer newValue) {
 
         Integer oldValue = this.dataBits;
-
         this.dataBits = newValue;
-
         this.pcs.firePropertyChange("dataBits", oldValue, newValue);
 
     }
@@ -119,11 +102,8 @@ public class SerialChannelConfig extends BaseChannelConfig {
 
 
     @XmlElement
-
     public FlowControl getFlowControl() {
-
         return flowControl;
-
     }
 
 
@@ -131,9 +111,7 @@ public class SerialChannelConfig extends BaseChannelConfig {
     public void setFlowControl(FlowControl newValue) {
 
         FlowControl oldValue = this.flowControl;
-
         this.flowControl = newValue;
-
         this.pcs.firePropertyChange("flowControl", oldValue, newValue);
 
     }
@@ -141,11 +119,8 @@ public class SerialChannelConfig extends BaseChannelConfig {
 
 
     @XmlElement
-
     public Parity getParity() {
-
         return parity;
-
     }
 
 
@@ -153,9 +128,7 @@ public class SerialChannelConfig extends BaseChannelConfig {
     public void setParity(Parity newValue) {
 
         Parity oldValue = this.parity;
-
         this.parity = newValue;
-
         this.pcs.firePropertyChange("parity", oldValue, newValue);
 
     }
@@ -163,11 +136,8 @@ public class SerialChannelConfig extends BaseChannelConfig {
 
 
     @XmlElement
-
     public Integer getStopBits() {
-
         return stopBits;
-
     }
 
 
@@ -175,9 +145,7 @@ public class SerialChannelConfig extends BaseChannelConfig {
     public void setStopBits(Integer newValue) {
 
         Integer oldValue = this.stopBits;
-
         this.stopBits = newValue;
-
         this.pcs.firePropertyChange("stopBits", oldValue, newValue);
 
     }
@@ -185,11 +153,8 @@ public class SerialChannelConfig extends BaseChannelConfig {
 
 
     @XmlElement
-
     public String getPort() {
-
         return port;
-
     }
 
 
@@ -197,9 +162,7 @@ public class SerialChannelConfig extends BaseChannelConfig {
     public void setPort(String newValue) {
 
         String oldValue = this.port;
-
         this.port = newValue;
-
         this.pcs.firePropertyChange("port", oldValue, newValue);
 
     }
@@ -207,17 +170,13 @@ public class SerialChannelConfig extends BaseChannelConfig {
 
 
     public static SerialChannelConfig loadFromXml(File file) throws JAXBException, FileNotFoundException {
-
         return loadFromXml(new FileInputStream(file));
-
     }
 
 
 
     public static SerialChannelConfig loadFromXml(String file) throws JAXBException, FileNotFoundException {
-
         return loadFromXml(new File(file));
-
     }
 
 
@@ -225,11 +184,8 @@ public class SerialChannelConfig extends BaseChannelConfig {
     public static SerialChannelConfig loadFromXml(InputStream is) throws JAXBException {
 
         JAXBContext jaxbContext = JAXBContext.newInstance(SerialChannelConfig.class);
-
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-
         SerialChannelConfig dnpSlaveConfig = (SerialChannelConfig) jaxbUnmarshaller.unmarshal(is);
-
         return dnpSlaveConfig;
 
     }
@@ -239,11 +195,8 @@ public class SerialChannelConfig extends BaseChannelConfig {
     public static void saveToXml(SerialChannelConfig model, OutputStream os) throws JAXBException {
 
         JAXBContext context = JAXBContext.newInstance(SerialChannelConfig.class);
-
         Marshaller marshaller = context.createMarshaller();
-
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-
         marshaller.marshal(model, os);
 
     }
@@ -251,9 +204,7 @@ public class SerialChannelConfig extends BaseChannelConfig {
 
 
     public static void saveToXml(SerialChannelConfig model, File os) throws JAXBException, FileNotFoundException {
-
         saveToXml(model, new FileOutputStream(os));
-
     }
 
 
@@ -263,11 +214,8 @@ public class SerialChannelConfig extends BaseChannelConfig {
     public void saveToXml(OutputStream os) throws IOException {
 
         try {
-
             SerialChannelConfig.saveToXml(this, os);
-
         } catch (JAXBException ex) {
-
             throw new IOException(ex);
 
         }
@@ -279,9 +227,7 @@ public class SerialChannelConfig extends BaseChannelConfig {
     @Override
 
     public void saveToXml(File os) throws IOException {
-
         saveToXml(new FileOutputStream(os));
-
     }
 
 
@@ -291,19 +237,14 @@ public class SerialChannelConfig extends BaseChannelConfig {
 
 
     @XmlElement(name = "reconnect")
-
     public ChannelRetryConfig getChannelRetry() {
-
         return channelRetryConfig;
-
     }
 
 
 
     public void setChannelRetry(ChannelRetryConfig channelRetryConfig) {
-
         this.channelRetryConfig = channelRetryConfig;
-
     }
 
 
@@ -311,21 +252,15 @@ public class SerialChannelConfig extends BaseChannelConfig {
     @Override
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
-
         super.addPropertyChangeListener(listener);
-
         this.channelRetryConfig.addPropertyChangeListener(listener);
-
     }
 
 
 
     @Override
-
     public void removePropertyChangeListener(PropertyChangeListener listener) {
-
         super.removePropertyChangeListener(listener);
-
         this.channelRetryConfig.removePropertyChangeListener(listener);
 
     }
@@ -335,9 +270,7 @@ public class SerialChannelConfig extends BaseChannelConfig {
     
 
     public static SerialChannelConfig loadFromDefault() throws JAXBException {
-
-        InputStream is = TcpClientConnection.class.getResourceAsStream("resources/DnpSerial.xml");
-
+        InputStream is = TcpClientConnection.class.getResourceAsStream("DnpSerial.xml");
         return loadFromXml(is);
 
     }

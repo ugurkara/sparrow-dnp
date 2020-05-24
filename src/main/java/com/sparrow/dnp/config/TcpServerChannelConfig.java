@@ -55,29 +55,21 @@ public class TcpServerChannelConfig extends TcpChannelConfig {
 
 
     public static TcpServerChannelConfig loadFromXml(File file) throws JAXBException, FileNotFoundException {
-
         return loadFromXml(new FileInputStream(file));
-
     }
 
 
 
     public static TcpServerChannelConfig loadFromXml(String file) throws JAXBException, FileNotFoundException {
-
         return loadFromXml(new File(file));
-
     }
 
 
 
     public static TcpServerChannelConfig loadFromXml(InputStream is) throws JAXBException {
-
         JAXBContext jaxbContext = JAXBContext.newInstance(TcpServerChannelConfig.class);
-
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-
         TcpServerChannelConfig dnpSlaveConfig = (TcpServerChannelConfig) jaxbUnmarshaller.unmarshal(is);
-
         return dnpSlaveConfig;
 
     }
@@ -87,21 +79,15 @@ public class TcpServerChannelConfig extends TcpChannelConfig {
     public static void saveToXml(TcpServerChannelConfig model, OutputStream os) throws JAXBException {
 
         JAXBContext context = JAXBContext.newInstance(TcpServerChannelConfig.class);
-
         Marshaller marshaller = context.createMarshaller();
-
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-
         marshaller.marshal(model, os);
-
     }
 
 
 
     public static void saveToXml(TcpServerChannelConfig model, File os) throws JAXBException, FileNotFoundException {
-
         saveToXml(model, new FileOutputStream(os));
-
     }
 
 
@@ -111,13 +97,9 @@ public class TcpServerChannelConfig extends TcpChannelConfig {
     public void saveToXml(OutputStream os) throws IOException {
 
         try {
-
             TcpServerChannelConfig.saveToXml(this, os);
-
         } catch (JAXBException ex) {
-
             throw new IOException(ex);
-
         }
 
     }
@@ -127,17 +109,14 @@ public class TcpServerChannelConfig extends TcpChannelConfig {
     @Override
 
     public void saveToXml(File os) throws IOException {
-
         saveToXml(new FileOutputStream(os));
-
     }
 
     
 
     public static TcpServerChannelConfig loadFromDefault() throws JAXBException {
 
-        InputStream is = TcpServerConnection.class.getResourceAsStream("resources/DnpTcpServer.xml");
-
+        InputStream is = TcpServerConnection.class.getResourceAsStream("DnpTcpServer.xml");
         return loadFromXml(is);
 
     }

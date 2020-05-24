@@ -59,7 +59,6 @@ public class LoadConfigFileTest {
         
         clientChannelConfig.getMasters().add(masterDevice);
         
-        TcpClientConnection connection=new TcpClientConnection(clientChannelConfig);
         
     }
     
