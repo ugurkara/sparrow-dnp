@@ -103,25 +103,24 @@ Copyright (c) 2013 - 2020 Automatak LLC
 
 ### Loading Configuration
 
-Load client channel config
 
+[DnpTcpClient.xml](https://github.com/ugurkara/sparrow-dnp/blob/master/src/main/resources/com/sparrow/dnp/DnpTcpClient.xml)
 ```
 TcpClientChannelConfig config=TcpClientChannelConfig.loadFromDefault();
 ```
 
-Load server channel config
+[DnpTcpServer.xml](https://github.com/ugurkara/sparrow-dnp/blob/master/src/main/resources/com/sparrow/dnp/DnpTcpServer.xml)
 ```
 TcpServerChannelConfig config=TcpServerChannelConfig.loadFromDefault();
 ```
-
-Load serial channel config
+[DnpSerial.xml](https://github.com/ugurkara/sparrow-dnp/blob/master/src/main/resources/com/sparrow/dnp/DnpSerial.xml)
 ```
 SerialChannelConfig config=SerialChannelConfig.loadFromDefault();
 ```
 
 ### Connections
 
-Connections stands for channels. TcpServer, TcpClient, Serials are connections types which are able to defined by XML as follows.
+Connections stands for channels. TcpServer, TcpClient, Serials are connections types which are able to be defined by XML as follows.
 
 ### TCP Server
 
