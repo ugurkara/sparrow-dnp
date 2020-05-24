@@ -142,15 +142,83 @@ To update your `.gitignore` files at any time, simply run:
 ```
 ### Masters
 ```
-ls | list       list all available files
-u | update      update all available gitignore files
-g | generate    generate gitignore files
+    <master>
+        <name>Master1</name>
+        <zoneOffset>0</zoneOffset>
+        <supportColdStart>false</supportColdStart>
+        <supportWarmStart>false</supportWarmStart>
+        <link>
+            <localAddress>4</localAddress>
+            <remoteAddress>3</remoteAddress>
+            <master>true</master>
+            <useconfirms>false</useconfirms>
+            <keepAliveTimeout>PT1M</keepAliveTimeout>
+            <responseTimeout>PT1S</responseTimeout>
+            <numRetry>0</numRetry>
+        </link>
+        <controlQualifierMode>always_two_bytes</controlQualifierMode>
+        <disableUnsolOnStartup>true</disableUnsolOnStartup>
+        <eventScanOnEventsAvailableClassMask>
+            <class0>false</class0>
+            <class1>false</class1>
+            <class2>false</class2>
+            <class3>false</class3>
+        </eventScanOnEventsAvailableClassMask>
+        <ignoreRestartIIN>false</ignoreRestartIIN>
+        <integrityOnEventOverflowIIN>true</integrityOnEventOverflowIIN>
+        <maxRxFragSize>2048</maxRxFragSize>
+        <maxTxFragSize>2048</maxTxFragSize>
+        <responseTimeout>PT5S</responseTimeout>
+        <startupIntegrityClassMask>
+            <pointClass>Class0</pointClass>
+            <pointClass>Class1</pointClass>
+            <pointClass>Class2</pointClass>
+            <pointClass>Class3</pointClass>
+            <class0>true</class0>
+            <class1>true</class1>
+            <class2>true</class2>
+            <class3>true</class3>
+        </startupIntegrityClassMask>
+        <taskRetryPeriod>PT5S</taskRetryPeriod>
+        <taskStartTimeout>PT10S</taskStartTimeout>
+        <timeSyncMode>None</timeSyncMode>
+        <unsolClassMask>
+            <pointClass>Class1</pointClass>
+            <pointClass>Class2</pointClass>
+            <pointClass>Class3</pointClass>
+            <class0>false</class0>
+            <class1>true</class1>
+            <class2>true</class2>
+            <class3>true</class3>
+        </unsolClassMask>
+    </master>
 ```
 ### Slaves(Outstations)
 ```
-ls | list       list all available files
-u | update      update all available gitignore files
-g | generate    generate gitignore files
+    <slave>
+        <name>Outstation4</name>
+        <zoneOffset>0</zoneOffset>
+        <supportColdStart>false</supportColdStart>
+        <supportWarmStart>false</supportWarmStart>
+        <link>
+            <localAddress>4</localAddress>
+            <remoteAddress>3</remoteAddress>
+            <master>false</master>
+            <useconfirms>false</useconfirms>
+            <keepAliveTimeout>PT1M</keepAliveTimeout>
+            <responseTimeout>PT1S</responseTimeout>
+            <numRetry>0</numRetry>
+        </link>
+        <allowUnsolicited>false</allowUnsolicited>
+        <indexMode>Contiguous</indexMode>
+        <maxControlsPerRequest>16</maxControlsPerRequest>
+        <maxRxFragSize>2048</maxRxFragSize>
+        <maxTxFragSize>2048</maxTxFragSize>
+        <selectTimeout>PT10S</selectTimeout>
+        <solicitedConfirmTimeout>PT5S</solicitedConfirmTimeout>
+        <unsolicitedConfirmTimeout>PT5S</unsolicitedConfirmTimeout>
+    </slave>
+
 ```
 ### Variables
 ```
