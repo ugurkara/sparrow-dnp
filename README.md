@@ -82,28 +82,46 @@ Copyright (c) 2013 - 2020 Automatak LLC
 
 # Usage
 
-### XML Configuration:
+### Configuration :
 
 ```
-ls | list       list all available files
-u | update      update all available gitignore files
-g | generate    generate gitignore files
+        //Channel Config
+        TcpClientChannelConfig clientChannelConfig=new TcpClientChannelConfig();
+        
+        //Device Config
+        MasterDeviceConfig masterDevice=new MasterDeviceConfig();
+        
+        //Variable Config
+        VariableConfig.AnalogInputConfig analogInputConfig = new VariableConfig.AnalogInputConfig();
+        
+        masterDevice.getAnalogInputs().getItems().add(analogInputConfig);
+        
+        clientChannelConfig.getMasters().add(masterDevice);
+        
+        TcpClientConnection connection=new TcpClientConnection(clientChannelConfig);
 ```
 
 ### Loading Configuration
 
-```bash
-$ joe g java    # outputs .gitignore file for java to stdout
+Load client channel config
+
+```
+TcpClientChannelConfig config=TcpClientChannelConfig.loadFromDefault();
 ```
 
-To update your `.gitignore` files at any time, simply run:
-
-```bash
-$ joe u
+Load server channel config
 ```
+TcpServerChannelConfig config=TcpServerChannelConfig.loadFromDefault();
+```
+
+Load serial channel config
+```
+SerialChannelConfig config=SerialChannelConfig.loadFromDefault();
+```
+
 ### Connections
 
-To update your `.gitignore` files at any time, simply run:
+Connections stands for channels. TcpServer, TcpClient, Serials are connections types which are able to defined by XML as follows.
 
 ### TCP Server
 
@@ -159,6 +177,10 @@ To update your `.gitignore` files at any time, simply run:
     </master>
 </dnp-serial>
 ```
+### Devices
+
+Devices are a type of nodes on a connection. Masters and Slaves are devices in the DNP protocol.
+
 ### Masters
 
 ```
