@@ -1,5 +1,5 @@
 /* 
- * Copyright 2020 KR INDUSTRIAL IT.
+ * Copyright 2020 KR ENDÜSTRİYEL BİLİŞİM LTD. ŞTİ..
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,98 +15,57 @@
  */
 package com.sparrow.dnp.config;
 
-
-
 import com.automatak.dnp3.enums.OperateType;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import javax.xml.bind.annotation.XmlElement;
 
-
-
 /**
-
  *
-
  * @author KR INDUSTRIAL IT
-
+ *
  */
-
 public class AnalogCommandConfig {
-
-
 
     private OperateType operateType = OperateType.DirectOperate;
 
-
-
     private CommandDataType dataType = CommandDataType.FLOAT;
 
-
-
     @XmlElement
-
     public OperateType getOperateType() {
-
         return operateType;
 
     }
 
-
-
     public void setOperateType(OperateType newValue) {
 
-        OperateType oldValue=this.operateType;
-
+        OperateType oldValue = this.operateType;
         this.operateType = newValue;
-
         pcs.firePropertyChange("operateType", oldValue, newValue);
 
     }
-
-
-
+    
     @XmlElement
-
     public CommandDataType getDataType() {
-
         return dataType;
-
     }
-
-
 
     public void setDataType(CommandDataType newValue) {
 
-        CommandDataType oldValue=this.dataType;
-
+        CommandDataType oldValue = this.dataType;
         this.dataType = newValue;
-
         pcs.firePropertyChange("dataType", oldValue, newValue);
 
     }
 
-
-
     private final PropertyChangeSupport pcs = new PropertyChangeSupport(AnalogCommandConfig.this);
 
-
-
     public void addPropertyChangeListener(PropertyChangeListener listener) {
-
         this.pcs.addPropertyChangeListener(listener);
-
     }
-
-
 
     public void removePropertyChangeListener(PropertyChangeListener listener) {
-
         this.pcs.removePropertyChangeListener(listener);
-
     }
 
-
-
 }
-

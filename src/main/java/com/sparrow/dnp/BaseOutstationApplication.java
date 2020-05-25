@@ -1,5 +1,5 @@
 /* 
- * Copyright 2020 KR INDUSTRIAL IT.
+ * Copyright 2020 KR ENDÜSTRİYEL BİLİŞİM LTD. ŞTİ..
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 package com.sparrow.dnp;
+
 
 import com.automatak.dnp3.ApplicationIIN;
 import com.automatak.dnp3.OutstationApplication;
@@ -34,11 +35,8 @@ import java.util.logging.Logger;
 public class BaseOutstationApplication implements OutstationApplication {
 
     private final static Logger logger = Logger.getLogger(BaseOutstationApplication.class.getName());
-
     private boolean supportsWriteAbsoluteTime = true;
-
     private ZoneId zoneId = ZoneId.ofOffset("", ZoneOffset.UTC);
-
     private LocalDateTime localDateTime = LocalDateTime.now();
 
     public LocalDateTime getLocalDateTime() {
@@ -74,6 +72,7 @@ public class BaseOutstationApplication implements OutstationApplication {
         return true;
     }
 
+
     @Override
     public boolean supportsAssignClass() {
         return false;
@@ -81,7 +80,6 @@ public class BaseOutstationApplication implements OutstationApplication {
 
     @Override
     public void recordClassAssignment(AssignClassType type, PointClass clazz, int start, int stop) {
-
     }
 
     @Override
@@ -111,22 +109,19 @@ public class BaseOutstationApplication implements OutstationApplication {
 
     @Override
     public void onStateChange(LinkStatus value) {
-
     }
 
     @Override
     public void onKeepAliveInitiated() {
-
     }
-
+    
     @Override
     public void onKeepAliveFailure() {
-
     }
-
+    
     @Override
     public void onKeepAliveSuccess() {
-
     }
-
 }
+
+

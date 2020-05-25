@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<!--
-Copyright 2020 KR INDUSTRIAL IT.
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-     http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
--->
-
 <dnp-tcp-client>
     <master>
-        <name>Master1</name>
+        <name>Master7</name>
         <zoneOffset>0</zoneOffset>
         <supportColdStart>false</supportColdStart>
         <supportWarmStart>false</supportWarmStart>
@@ -31,7 +15,9 @@ limitations under the License.
             <numRetry>0</numRetry>
         </link>
         <memoryUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="analogInputs">
+            <defaultPointClass>Class1</defaultPointClass>
             <eventBufferSize>0</eventBufferSize>
+            <size>10</size>
             <analogInput>
                 <index>0</index>
                 <pointClass>Class1</pointClass>
@@ -102,9 +88,13 @@ limitations under the License.
                 <eventVariation>Group32Var1</eventVariation>
                 <staticVariation>Group30Var1</staticVariation>
             </analogInput>
+            <defaultEventVariation>Group32Var1</defaultEventVariation>
+            <defaultStaticVariation>Group30Var1</defaultStaticVariation>
         </memoryUnit>
         <memoryUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="analogOutputs">
+            <defaultPointClass>Class1</defaultPointClass>
             <eventBufferSize>0</eventBufferSize>
+            <size>10</size>
             <analogOutput>
                 <index>0</index>
                 <pointClass>Class1</pointClass>
@@ -225,9 +215,13 @@ limitations under the License.
                 <selectionRequired>false</selectionRequired>
                 <staticVariation>Group40Var1</staticVariation>
             </analogOutput>
+            <defaultEventVariation>Group42Var1</defaultEventVariation>
+            <defaultStaticVariation>Group40Var1</defaultStaticVariation>
         </memoryUnit>
         <memoryUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="digitalInputs">
+            <defaultPointClass>Class1</defaultPointClass>
             <eventBufferSize>0</eventBufferSize>
+            <size>10</size>
             <digitalInput>
                 <index>0</index>
                 <pointClass>Class1</pointClass>
@@ -288,9 +282,13 @@ limitations under the License.
                 <eventVariation>Group2Var1</eventVariation>
                 <staticVariation>Group1Var2</staticVariation>
             </digitalInput>
+            <defaultEventVariation>Group2Var1</defaultEventVariation>
+            <defaultStaticVariation>Group1Var2</defaultStaticVariation>
         </memoryUnit>
         <memoryUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="counters">
+            <defaultPointClass>Class1</defaultPointClass>
             <eventBufferSize>0</eventBufferSize>
+            <size>10</size>
             <counter>
                 <index>0</index>
                 <pointClass>Class1</pointClass>
@@ -361,9 +359,13 @@ limitations under the License.
                 <eventVariation>Group22Var1</eventVariation>
                 <staticVariation>Group20Var1</staticVariation>
             </counter>
+            <defaultEventVariation>Group22Var1</defaultEventVariation>
+            <defaultStaticVariation>Group20Var1</defaultStaticVariation>
         </memoryUnit>
         <memoryUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="digitalOutputs">
+            <defaultPointClass>Class1</defaultPointClass>
             <eventBufferSize>0</eventBufferSize>
+            <size>10</size>
             <digitalOutput>
                 <index>0</index>
                 <pointClass>Class1</pointClass>
@@ -504,9 +506,13 @@ limitations under the License.
                 <selectionRequired>false</selectionRequired>
                 <staticVariation>Group10Var2</staticVariation>
             </digitalOutput>
+            <defaultEventVariation>Group11Var1</defaultEventVariation>
+            <defaultStaticVariation>Group10Var2</defaultStaticVariation>
         </memoryUnit>
         <memoryUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="doubleDigitals">
+            <defaultPointClass>Class1</defaultPointClass>
             <eventBufferSize>0</eventBufferSize>
+            <size>10</size>
             <doubleDigital>
                 <index>0</index>
                 <pointClass>Class1</pointClass>
@@ -567,79 +573,85 @@ limitations under the License.
                 <eventVariation>Group4Var1</eventVariation>
                 <staticVariation>Group3Var2</staticVariation>
             </doubleDigital>
+            <defaultEventVariation>Group4Var1</defaultEventVariation>
+            <defaultStaticVariation>Group3Var2</defaultStaticVariation>
         </memoryUnit>
         <memoryUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="frozenCounters">
+            <defaultPointClass>Class1</defaultPointClass>
             <eventBufferSize>0</eventBufferSize>
+            <size>10</size>
             <frozenCounter>
-                <index>0</index>
+                <index>45</index>
                 <pointClass>Class1</pointClass>
                 <deadband>0</deadband>
                 <eventVariation>Group23Var1</eventVariation>
                 <staticVariation>Group21Var1</staticVariation>
             </frozenCounter>
             <frozenCounter>
-                <index>1</index>
+                <index>46</index>
                 <pointClass>Class1</pointClass>
                 <deadband>0</deadband>
                 <eventVariation>Group23Var1</eventVariation>
                 <staticVariation>Group21Var1</staticVariation>
             </frozenCounter>
             <frozenCounter>
-                <index>2</index>
+                <index>47</index>
                 <pointClass>Class1</pointClass>
                 <deadband>0</deadband>
                 <eventVariation>Group23Var1</eventVariation>
                 <staticVariation>Group21Var1</staticVariation>
             </frozenCounter>
             <frozenCounter>
-                <index>3</index>
+                <index>48</index>
                 <pointClass>Class1</pointClass>
                 <deadband>0</deadband>
                 <eventVariation>Group23Var1</eventVariation>
                 <staticVariation>Group21Var1</staticVariation>
             </frozenCounter>
             <frozenCounter>
-                <index>4</index>
+                <index>49</index>
                 <pointClass>Class1</pointClass>
                 <deadband>0</deadband>
                 <eventVariation>Group23Var1</eventVariation>
                 <staticVariation>Group21Var1</staticVariation>
             </frozenCounter>
             <frozenCounter>
-                <index>5</index>
+                <index>50</index>
                 <pointClass>Class1</pointClass>
                 <deadband>0</deadband>
                 <eventVariation>Group23Var1</eventVariation>
                 <staticVariation>Group21Var1</staticVariation>
             </frozenCounter>
             <frozenCounter>
-                <index>6</index>
+                <index>51</index>
                 <pointClass>Class1</pointClass>
                 <deadband>0</deadband>
                 <eventVariation>Group23Var1</eventVariation>
                 <staticVariation>Group21Var1</staticVariation>
             </frozenCounter>
             <frozenCounter>
-                <index>7</index>
+                <index>52</index>
                 <pointClass>Class1</pointClass>
                 <deadband>0</deadband>
                 <eventVariation>Group23Var1</eventVariation>
                 <staticVariation>Group21Var1</staticVariation>
             </frozenCounter>
             <frozenCounter>
-                <index>8</index>
+                <index>53</index>
                 <pointClass>Class1</pointClass>
                 <deadband>0</deadband>
                 <eventVariation>Group23Var1</eventVariation>
                 <staticVariation>Group21Var1</staticVariation>
             </frozenCounter>
             <frozenCounter>
-                <index>9</index>
+                <index>54</index>
                 <pointClass>Class1</pointClass>
                 <deadband>0</deadband>
                 <eventVariation>Group23Var1</eventVariation>
                 <staticVariation>Group21Var1</staticVariation>
             </frozenCounter>
+            <defaultEventVariation>Group23Var1</defaultEventVariation>
+            <defaultStaticVariation>Group21Var1</defaultStaticVariation>
         </memoryUnit>
         <controlQualifierMode>always_two_bytes</controlQualifierMode>
         <disableUnsolOnStartup>true</disableUnsolOnStartup>
@@ -677,7 +689,7 @@ limitations under the License.
             <class3>true</class3>
         </unsolClassMask>
     </master>
-    <name>Channel1</name>
+    <name>Channel6</name>
     <host>127.0.0.1</host>
     <port>20000</port>
     <adapter>0.0.0.0</adapter>

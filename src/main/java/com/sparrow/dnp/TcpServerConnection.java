@@ -1,5 +1,5 @@
 /* 
- * Copyright 2020 KR INDUSTRIAL IT.
+ * Copyright 2020 KR ENDÜSTRİYEL BİLİŞİM LTD. ŞTİ..
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,79 +15,40 @@
  */
 package com.sparrow.dnp;
 
-
-
 import com.automatak.dnp3.Channel;
 import com.automatak.dnp3.DNP3Manager;
 import com.automatak.dnp3.LogMasks;
 import com.automatak.dnp3.enums.ServerAcceptMode;
 import com.sparrow.dnp.config.TcpServerChannelConfig;
 
-
-
 /**
-
  *
-
- *
-
- *
-
  * @author ugurkara
-
  *
-
  */
-
 public class TcpServerConnection extends BaseConection {
-
-
 
     private final TcpServerChannelConfig config;
 
-
-
     public TcpServerConnection(TcpServerChannelConfig config) {
-
         super(config);
-
         this.config = config;
-
-
-
     }
 
-
-
     @Override
-
     protected Channel newChannel(DNP3Manager manager) throws Exception {
 
-
-
         Channel channel = manager.addTCPServer(
-
                 config.getName(),
-
                 LogMasks.NORMAL | LogMasks.APP_COMMS,
-
                 ServerAcceptMode.CloseExisting,
-
                 config.getHost(),
-
                 config.getPort(),
-
                 getChannelListener()
-
         );
-
-
 
         return channel;
 
     }
 
-
-
 }
-

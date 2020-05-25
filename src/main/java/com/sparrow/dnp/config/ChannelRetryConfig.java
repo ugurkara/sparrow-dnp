@@ -1,5 +1,5 @@
 /* 
- * Copyright 2020 KR INDUSTRIAL IT.
+ * Copyright 2020 KR ENDÜSTRİYEL BİLİŞİM LTD. ŞTİ..
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,49 +23,66 @@ import javax.xml.bind.annotation.XmlElement;
 
 /**
  *
+ *
+ *
+ *
+ *
  * @author KR INDUSTRIAL IT
+ *
+ *
  */
 public class ChannelRetryConfig {
 
     private final ChannelRetry channelRetry = ChannelRetry.getDefault();
+
     private Duration maxRetryDelay = channelRetry.maxRetryDelay;
     private Duration minRetryDelay = channelRetry.minRetryDelay;
     private Duration reconnectDelay = channelRetry.reconnectDelay;
 
     public ChannelRetryConfig() {
+
     }
 
     @XmlElement
     public String getMaxRetryDelay() {
         return maxRetryDelay.toString();
+
     }
 
     public void setMaxRetryDelay(String newValue) {
+        
         Duration oldValue = this.maxRetryDelay;
         this.maxRetryDelay = Duration.parse(newValue);
         this.pcs.firePropertyChange("maxRetryDelay", oldValue, this.maxRetryDelay);
+
     }
 
     @XmlElement
     public String getMinRetryDelay() {
         return minRetryDelay.toString();
+
     }
 
     public void setMinRetryDelay(String newValue) {
+
         Duration oldValue = this.minRetryDelay;
         this.minRetryDelay = Duration.parse(newValue);
         this.pcs.firePropertyChange("minRetryDelay", oldValue, this.minRetryDelay);
+
     }
 
     @XmlElement
     public String getReconnectDelay() {
         return reconnectDelay.toString();
+
     }
 
     public void setReconnectDelay(String newValue) {
+
         Duration oldValue = this.reconnectDelay;
         this.reconnectDelay = Duration.parse(newValue);
         this.pcs.firePropertyChange("reconnectDelay", oldValue, this.reconnectDelay);
+
     }
 
     private final PropertyChangeSupport pcs = new PropertyChangeSupport(ChannelRetryConfig.this);
@@ -81,4 +98,5 @@ public class ChannelRetryConfig {
     public ChannelRetry build() {
         return new ChannelRetry(minRetryDelay, maxRetryDelay, reconnectDelay);
     }
+
 }

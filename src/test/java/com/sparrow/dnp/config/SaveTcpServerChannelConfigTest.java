@@ -1,5 +1,5 @@
 /* 
- * Copyright 2020 KR INDUSTRIAL IT.
+ * Copyright 2020 KR ENDÜSTRİYEL BİLİŞİM LTD. ŞTİ..
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,56 +15,20 @@
  */
 package com.sparrow.dnp.config;
 
+
+
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-/**
- *
- *
- *
- * @author ugurkara
- *
- */
+
+
+
 public class SaveTcpServerChannelConfigTest {
 
     private static Logger logger = Logger.getLogger(SaveTcpClientChannelConfigTest.class.getName());
 
-    public SaveTcpServerChannelConfigTest() {
-
-    }
-
-    @BeforeAll
-
-    public static void setUpClass() {
-
-    }
-
-    @AfterAll
-    public static void tearDownClass() {
-
-    }
-
-    @BeforeEach
-    public void setUp() {
-
-    }
-
-    @AfterEach
-    public void tearDown() {
-
-    }
-
-    /**
-     *
-     * Test of getItems method, of class MemoryUnitConfig.
-     *
-     */
     @Test
     public void testCreateConfigFile() throws Exception {
 
@@ -73,6 +37,10 @@ public class SaveTcpServerChannelConfigTest {
         File file = new File(DefaultFactory.parentFile(), "DnpTcpServer.xml");
         logger.log(Level.INFO, "TcpServer Config file is saving to {0}", file.getAbsolutePath());
         config.saveToXml(file);
+
     }
 
+
+
 }
+

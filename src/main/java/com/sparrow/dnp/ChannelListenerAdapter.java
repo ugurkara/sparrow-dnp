@@ -1,5 +1,5 @@
 /* 
- * Copyright 2020 KR INDUSTRIAL IT.
+ * Copyright 2020 KR ENDÜSTRİYEL BİLİŞİM LTD. ŞTİ..
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -70,13 +70,13 @@ public class ChannelListenerAdapter implements ChannelListener {
             cl.stateChanged(ConnectionState.OPEN);
         });
     }
-    
+
     protected void fireStarted() {
         listeners.forEach((ConnectionListener cl) -> {
             cl.stateChanged(ConnectionState.STARTED);
         });
     }
-    
+
     protected void fireStoped() {
         listeners.forEach((ConnectionListener cl) -> {
             cl.stateChanged(ConnectionState.STOPPED);

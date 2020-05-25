@@ -1,5 +1,5 @@
 /* 
- * Copyright 2020 KR INDUSTRIAL IT.
+ * Copyright 2020 KR ENDÜSTRİYEL BİLİŞİM LTD. ŞTİ..
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,6 @@
  */
 package com.sparrow.dnp;
 
-
-
 import com.automatak.dnp3.Channel;
 import com.automatak.dnp3.DNP3Exception;
 import com.automatak.dnp3.DNP3Manager;
@@ -25,67 +23,31 @@ import com.automatak.dnp3.LogMasks;
 import com.sparrow.dnp.config.TcpClientChannelConfig;
 import java.util.Collections;
 
-
-
 /**
-
- *
-
- *
-
- *
-
  * @author ugurkara
-
- *
-
  */
-
 public class TcpClientConnection extends BaseConection {
-
-
 
     private final TcpClientChannelConfig config;
 
-
-
     public TcpClientConnection(TcpClientChannelConfig config) {
-
         super(config);
-
         this.config = config;
-
     }
 
-
-
     @Override
-
     protected Channel newChannel(DNP3Manager manager) throws DNP3Exception {
 
-
-
         Channel channel = manager.addTCPClient(
-
                 config.getName(),
-
                 LogMasks.NORMAL | LogMasks.APP_COMMS,
-
                 config.getChannelRetry().build(),
-
                 Collections.singletonList(new IPEndpoint(config.getHost(), config.getPort())),
-
                 config.getAdapter(),
-
                 getChannelListener());
-
-
 
         return channel;
 
     }
 
-
-
 }
-

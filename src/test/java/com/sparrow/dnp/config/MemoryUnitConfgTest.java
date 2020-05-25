@@ -17,41 +17,32 @@ package com.sparrow.dnp.config;
 
 
 
-
-
-
-
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.jupiter.api.Test;
 
 
-public class SaveTcpClientChannelConfigTest {
 
-    private static Logger logger=Logger.getLogger(SaveTcpClientChannelConfigTest.class.getName());
+
+public class MemoryUnitConfgTest {
+
+    private static Logger logger = Logger.getLogger(SaveTcpClientChannelConfigTest.class.getName());
 
     @Test
-    public void testCreateConfigFile() throws Exception {
+    public void testMemoryUnitSize() throws Exception {
 
-        TcpClientChannelConfig config = new TcpClientChannelConfig();
-        config.getMasters().add(DefaultFactory.createExampleMasterDeviceConfig());
-        File file = new File(DefaultFactory.parentFile(), "DnpTcpClient.xml");
-        logger.log(Level.INFO, "TcpClient Config file is saving to {0}", file.getAbsolutePath());
+        TcpServerChannelConfig config = new TcpServerChannelConfig();
+        SlaveDeviceConfig slaveDeviceConfig=new SlaveDeviceConfig();
+        slaveDeviceConfig.getAnalogInputs().setSize(15);
+        config.getSlaves().add(slaveDeviceConfig);
+        File file = new File(DefaultFactory.parentFile(), "DnpTcpServer2.xml");
+        logger.log(Level.INFO, "TcpServer Config file is saving to {0}", file.getAbsolutePath());
         config.saveToXml(file);
+
     }
 
 
 
-
-
-
-
-   
-
-
-
 }
-
-
 

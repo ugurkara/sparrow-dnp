@@ -1,5 +1,5 @@
 /* 
- * Copyright 2020 KR INDUSTRIAL IT.
+ * Copyright 2020 KR ENDÜSTRİYEL BİLİŞİM LTD. ŞTİ..
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 package com.sparrow.dnp.config;
-
-
 
 import com.sparrow.dnp.TcpClientConnection;
 import java.beans.PropertyChangeListener;
@@ -33,38 +31,19 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-
-
 /**
-
- *
-
- *
-
- *
-
  * @author ugurkara
-
- *
-
  */
-
 @XmlRootElement(name = "dnp-tcp-client")
 public class TcpClientChannelConfig extends TcpChannelConfig {
-
-
 
     public static TcpClientChannelConfig loadFromXml(File file) throws JAXBException, FileNotFoundException {
         return loadFromXml(new FileInputStream(file));
     }
 
-
-
     public static TcpClientChannelConfig loadFromXml(String file) throws JAXBException, FileNotFoundException {
         return loadFromXml(new File(file));
     }
-
-
 
     public static TcpClientChannelConfig newInstance() {
 
@@ -75,158 +54,77 @@ public class TcpClientChannelConfig extends TcpChannelConfig {
 
     }
 
-    
-
     public static TcpClientChannelConfig loadFromDefault() throws JAXBException {
-
         InputStream is = TcpClientConnection.class.getResourceAsStream("DnpTcpClient.xml");
         return loadFromXml(is);
-
     }
 
-
-
-
-
     public static TcpClientChannelConfig loadFromXml(InputStream is) throws JAXBException {
-
-
-
         JAXBContext jaxbContext = JAXBContext.newInstance(TcpClientChannelConfig.class);
-
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-
         TcpClientChannelConfig dnpSlaveConfig = (TcpClientChannelConfig) jaxbUnmarshaller.unmarshal(is);
-
         return dnpSlaveConfig;
 
     }
 
-
-
     public static void saveToXml(TcpClientChannelConfig model, OutputStream os) throws JAXBException {
-
-
-
         JAXBContext context = JAXBContext.newInstance(TcpClientChannelConfig.class);
-
         Marshaller marshaller = context.createMarshaller();
-
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-
         marshaller.marshal(model, os);
-
     }
-
-
 
     public static void saveToXml(TcpClientChannelConfig model, File os) throws JAXBException, FileNotFoundException {
-
         saveToXml(model, new FileOutputStream(os));
-
     }
 
-
-
     @Override
-
     public void saveToXml(OutputStream os) throws IOException {
-
         try {
-
             TcpClientChannelConfig.saveToXml(this, os);
-
         } catch (JAXBException ex) {
-
             throw new IOException(ex);
-
         }
-
     }
-
-
 
     @Override
-
     public void saveToXml(File os) throws IOException {
-
-            saveToXml(new FileOutputStream(os));
-
+        saveToXml(new FileOutputStream(os));
     }
-
-
 
     private ChannelRetryConfig channelRetryConfig = new ChannelRetryConfig();
-
-
-
     @XmlElement(name = "reconnect")
-
     public ChannelRetryConfig getChannelRetry() {
-
         return channelRetryConfig;
-
     }
-
-
 
     public void setChannelRetry(ChannelRetryConfig channelRetryConfig) {
-
         this.channelRetryConfig = channelRetryConfig;
-
     }
 
-
-
     @Override
-
     public void addPropertyChangeListener(PropertyChangeListener listener) {
-
         super.addPropertyChangeListener(listener);
-
         this.channelRetryConfig.addPropertyChangeListener(listener);
-
     }
-
-
 
     @Override
-
     public void removePropertyChangeListener(PropertyChangeListener listener) {
-
         super.removePropertyChangeListener(listener);
-
         this.channelRetryConfig.removePropertyChangeListener(listener);
-
     }
-
-
 
     private String adapter = "0.0.0.0";
 
-
-
     @XmlElement()
-
     public String getAdapter() {
-
         return adapter;
-
     }
-
-
 
     public void setAdapter(String value) {
-
         String oldValue = this.adapter;
-
         this.adapter = value;
-
         this.pcs.firePropertyChange("adapter", oldValue, value);
-
     }
 
-
-
 }
-
