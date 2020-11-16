@@ -13,54 +13,61 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sparrow.dnp.config;
-
-import com.sparrow.dnp.TcpClientConnection;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
-/**
- *
- * @author KR INDUSTRIAL IT
- */
-public class LoadConfigFileTest {
-
-    @Test
-    public void testLoadTcpClientFromDefault() throws Exception {
-
-        TcpClientChannelConfig config=TcpClientChannelConfig.loadFromDefault();
-        Assertions.assertNotNull(config);
-        
-    }
-
-    @Test
-    public void testLoadTcpServerFromDefault() throws Exception {
-        TcpServerChannelConfig config=TcpServerChannelConfig.loadFromDefault();
-        Assertions.assertNotNull(config);
-    }
-
-    @Test
-    public void testLoadSerialFromDefault() throws Exception {
-        SerialChannelConfig config=SerialChannelConfig.loadFromDefault();
-        Assertions.assertNotNull(config);
-    }
-    
-    @Test
-    public void testLoadTcpClient() throws Exception {
-        //Channel Config
-        TcpClientChannelConfig clientChannelConfig=new TcpClientChannelConfig();
-        //Device Config
-        MasterDeviceConfig masterDevice=new MasterDeviceConfig();
-        
-        //Variable Config
-        VariableConfig.AnalogInputConfig analogInputConfig = new VariableConfig.AnalogInputConfig();
-        
-        masterDevice.getAnalogInputs().getItems().add(analogInputConfig);
-        
-        clientChannelConfig.getMasters().add(masterDevice);
-        
-        
-    }
-    
-
-}
+package com.sparrow.dnp.config;
+
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ *
+ *
+ *
+ * @author KR INDUSTRIAL IT
+ *
+ */
+public class LoadConfigFileTest {
+
+    @Test
+    public void testLoadTcpClientFromDefault() throws Exception {
+
+        TcpClientChannelConfig config = TcpClientChannelConfig.loadFromDefault();
+        Assertions.assertNotNull(config);
+
+    }
+
+    @Test
+    public void testLoadTcpServerFromDefault() throws Exception {
+
+        TcpServerChannelConfig config = TcpServerChannelConfig.loadFromDefault();
+        Assertions.assertNotNull(config);
+
+    }
+
+    @Test
+    public void testLoadSerialFromDefault() throws Exception {
+
+        SerialChannelConfig config = SerialChannelConfig.loadFromDefault();
+        Assertions.assertNotNull(config);
+
+    }
+
+    @Test
+    public void testLoadTcpClient() throws Exception {
+
+        //Channel Config
+        TcpClientChannelConfig clientChannelConfig = new TcpClientChannelConfig();
+
+        //Device Config
+        MasterDeviceConfig masterDevice = new MasterDeviceConfig();
+
+        //Variable Config
+        VariableConfig.AnalogInputConfig analogInputConfig = new VariableConfig.AnalogInputConfig();
+
+        masterDevice.getAnalogInputs().getItems().add(analogInputConfig);
+        
+        clientChannelConfig.getMasters().add(masterDevice);
+
+    }
+
+}

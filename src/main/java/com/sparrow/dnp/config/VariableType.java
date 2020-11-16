@@ -36,28 +36,8 @@ public enum VariableType {
     }
 
 
-
-
-
-
-
     public String getShortName() {
-
-
-
         return this.name;
-
-
-
     }
 
-
-
-
-
-
-
 }
-
-
-

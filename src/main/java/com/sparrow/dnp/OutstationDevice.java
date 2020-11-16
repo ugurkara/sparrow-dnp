@@ -39,6 +39,7 @@ import java.time.ZoneOffset;
 public class OutstationDevice extends BaseDevice {
 
     private final OutstationStackConfig outstationStackConfig;
+    
     private final BaseOutstationApplication baseOutstationApplication = new BaseOutstationApplication();
 
     public BaseOutstationApplication getOutstationApplication() {

@@ -179,10 +179,7 @@ public abstract class DnpVariable<T, S extends Measurement> {
             return v;
         }
 
-        /*
 
-        Can be interface?
-         */
         public boolean isSelectionRequired() {
             return selectionRequired;
         }
@@ -198,9 +195,6 @@ public abstract class DnpVariable<T, S extends Measurement> {
         public void unselect() {
             this.selected = false;
         }
-        /*
-        ----------------------------
-         */
     }
 
     /*

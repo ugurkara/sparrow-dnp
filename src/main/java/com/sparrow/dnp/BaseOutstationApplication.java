@@ -36,6 +36,7 @@ public class BaseOutstationApplication implements OutstationApplication {
 
     private final static Logger logger = Logger.getLogger(BaseOutstationApplication.class.getName());
     private boolean supportsWriteAbsoluteTime = true;
+    
     private ZoneId zoneId = ZoneId.ofOffset("", ZoneOffset.UTC);
     private LocalDateTime localDateTime = LocalDateTime.now();
 
