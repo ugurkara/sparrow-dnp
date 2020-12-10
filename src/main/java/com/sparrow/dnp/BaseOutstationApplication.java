@@ -17,6 +17,7 @@ package com.sparrow.dnp;
 
 
 import com.automatak.dnp3.ApplicationIIN;
+import com.automatak.dnp3.DNPTime;
 import com.automatak.dnp3.OutstationApplication;
 import com.automatak.dnp3.enums.AssignClassType;
 import com.automatak.dnp3.enums.LinkStatus;
@@ -122,6 +123,16 @@ public class BaseOutstationApplication implements OutstationApplication {
     
     @Override
     public void onKeepAliveSuccess() {
+    }
+
+    @Override
+    public void onConfirmProcessed(boolean isUnsolicited, long numClass1, long numClass2, long numClass3) {
+        //TODO
+    }
+
+    @Override
+    public DNPTime now() {
+        return new DNPTime(System.currentTimeMillis());
     }
 }
 

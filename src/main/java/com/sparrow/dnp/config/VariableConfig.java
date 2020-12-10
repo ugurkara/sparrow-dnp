@@ -47,23 +47,27 @@ public abstract class VariableConfig<T extends EventConfig> {
 
     private final T eventConfig;
 
-    public VariableConfig(T eventConfig) {
+    private  int index=0;
+    public VariableConfig(T eventConfig, int index) {
         this.eventConfig = eventConfig;
+        this.index=index;
     }
 
     public T getEventConfig() {
         return eventConfig;
     }
 
+    
+    
     @XmlElement
     public Integer getIndex() {
-        return eventConfig.vIndex;
+        return index;
     }
 
     public void setIndex(Integer newValue) {
 
-        Integer oldValue = this.eventConfig.vIndex;
-        this.eventConfig.vIndex = newValue;
+        Integer oldValue = this.index;
+        this.index = newValue;
         this.pcs.firePropertyChange("index", oldValue, newValue);
 
     }
@@ -103,7 +107,7 @@ public abstract class VariableConfig<T extends EventConfig> {
         }
 
         public DigitalInputConfig(int index) {
-            super(new BinaryConfig(index));
+            super(new BinaryConfig(),index);
         }
 
         @XmlElement
@@ -148,7 +152,7 @@ public abstract class VariableConfig<T extends EventConfig> {
         }
 
         public DigitalOutputConfig(int index) {
-            super(new BinaryOutputStatusConfig(index));
+            super(new BinaryOutputStatusConfig(),index);
         }
 
         @XmlElement
@@ -225,7 +229,7 @@ public abstract class VariableConfig<T extends EventConfig> {
         }
 
         public AnalogInputConfig(int index) {
-            super(new AnalogConfig(index));
+            super(new AnalogConfig(),index);
         }
 
         @XmlElement
@@ -298,7 +302,7 @@ public abstract class VariableConfig<T extends EventConfig> {
         }
 
         public AnalogOutputConfig(int index) {
-            super(new AnalogOutputStatusConfig(index));
+            super(new AnalogOutputStatusConfig(),index);
         }
 
         @XmlElement
@@ -388,7 +392,7 @@ public abstract class VariableConfig<T extends EventConfig> {
         }
 
         public CounterConfig(int index) {
-            super(new com.automatak.dnp3.CounterConfig(index));
+            super(new com.automatak.dnp3.CounterConfig(),index);
         }
 
         @XmlElement
@@ -447,7 +451,7 @@ public abstract class VariableConfig<T extends EventConfig> {
         }
 
         public FrozenCounterConfig(int index) {
-            super(new com.automatak.dnp3.FrozenCounterConfig(index));
+            super(new com.automatak.dnp3.FrozenCounterConfig(),index);
         }
 
         @XmlElement
@@ -501,7 +505,7 @@ public abstract class VariableConfig<T extends EventConfig> {
         }
 
         public DoubleDigitalConfig(int index) {
-            super(new DoubleBinaryConfig(index));
+            super(new DoubleBinaryConfig(),index);
         }
 
         @XmlElement

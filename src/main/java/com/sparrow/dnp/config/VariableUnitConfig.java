@@ -129,7 +129,7 @@ public abstract class VariableUnitConfig<T extends VariableConfig> {
         @Override
         public void build(DatabaseConfig config) {
             getItems().forEach((VariableConfig.DigitalInputConfig t) -> {
-                config.binary.add(t.getEventConfig());
+                config.binary.put(t.getIndex(),t.getEventConfig());
             });
         }
 
@@ -195,7 +195,7 @@ public abstract class VariableUnitConfig<T extends VariableConfig> {
         @Override
         public void build(DatabaseConfig config) {
             getItems().forEach((VariableConfig.DigitalOutputConfig t) -> {
-                config.boStatus.add(t.getEventConfig());
+                config.boStatus.put(t.getIndex(),t.getEventConfig());
             });
 
         }
@@ -259,7 +259,7 @@ public abstract class VariableUnitConfig<T extends VariableConfig> {
         @Override
         public void build(DatabaseConfig config) {
             getItems().forEach((VariableConfig.AnalogInputConfig t) -> {
-                config.analog.add(t.getEventConfig());
+                config.analog.put(t.getIndex(),t.getEventConfig());
             });
 
         }
@@ -327,7 +327,7 @@ public abstract class VariableUnitConfig<T extends VariableConfig> {
         @Override
         public void build(DatabaseConfig config) {
             getItems().forEach((VariableConfig.AnalogOutputConfig t) -> {
-                config.aoStatus.add(t.getEventConfig());
+                config.aoStatus.put(t.getIndex(),t.getEventConfig());
             });
 
         }
@@ -390,7 +390,7 @@ public abstract class VariableUnitConfig<T extends VariableConfig> {
         @Override
         public void build(DatabaseConfig config) {
             getItems().forEach((VariableConfig.CounterConfig t) -> {
-                config.counter.add(t.getEventConfig());
+                config.counter.put(t.getIndex(),t.getEventConfig());
             });
 
         }
@@ -458,7 +458,7 @@ public abstract class VariableUnitConfig<T extends VariableConfig> {
         public void build(DatabaseConfig config) {
 
             getItems().forEach((VariableConfig.DoubleDigitalConfig t) -> {
-                config.doubleBinary.add(t.getEventConfig());
+                config.doubleBinary.put(t.getIndex(),t.getEventConfig());
             });
 
         }
@@ -526,7 +526,7 @@ public abstract class VariableUnitConfig<T extends VariableConfig> {
         @Override
         public void build(DatabaseConfig config) {
             getItems().forEach((VariableConfig.FrozenCounterConfig t) -> {
-                config.frozenCounter.add(t.getEventConfig());
+                config.frozenCounter.put(t.getIndex(),t.getEventConfig());
             });
 
         }

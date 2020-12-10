@@ -25,6 +25,7 @@ import com.automatak.dnp3.DoubleBitBinaryInput;
 import com.automatak.dnp3.FrozenCounter;
 import com.automatak.dnp3.HeaderInfo;
 import com.automatak.dnp3.IndexedValue;
+import com.automatak.dnp3.ResponseInfo;
 import com.automatak.dnp3.SOEHandler;
 import com.automatak.dnp3.mock.PrintingSOEHandler;
 import com.sparrow.dnp.config.MasterDeviceConfig;
@@ -48,13 +49,6 @@ public class MasterDevice extends BaseDevice implements SOEHandler {
         super(name);
     }
 
-    @Override
-    public void start() {
-    }
-
-    @Override
-    public void end() {
-    }
 
     @Override
     public void processBI(HeaderInfo hi, Iterable<IndexedValue<BinaryInput>> itrbl) {
@@ -256,5 +250,15 @@ public class MasterDevice extends BaseDevice implements SOEHandler {
         });
 
         return masterDevice;
+    }
+
+    @Override
+    public void beginFragment(ResponseInfo info) {
+        
+    }
+
+    @Override
+    public void endFragment(ResponseInfo info) {
+        
     }
 }

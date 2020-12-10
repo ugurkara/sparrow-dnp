@@ -21,7 +21,9 @@ import com.automatak.dnp3.AnalogOutputStatus;
 import com.automatak.dnp3.BinaryInput;
 import com.automatak.dnp3.BinaryOutputStatus;
 import com.automatak.dnp3.Counter;
+import com.automatak.dnp3.DNPTime;
 import com.automatak.dnp3.DoubleBitBinaryInput;
+import com.automatak.dnp3.Flags;
 import com.automatak.dnp3.FrozenCounter;
 import com.automatak.dnp3.OutstationChangeSet;
 import com.automatak.dnp3.enums.AnalogOutputStatusQuality;
@@ -35,6 +37,7 @@ import com.automatak.dnp3.enums.FrozenCounterQuality;
 import java.beans.PropertyChangeListener;
 import java.util.HashMap;
 import java.util.logging.Logger;
+
 /**
  *
  * @author ugurkara
@@ -44,9 +47,11 @@ public abstract class MemoryUnit<T extends DnpVariable> {
 
     private final HashMap<Integer, T> items = new HashMap<>();
     private static final Logger logger = Logger.getLogger(MemoryUnit.class.getName());
+
     protected abstract void updateEvent(OutstationChangeSet changeSet, T t, EventMode mode);
+
     public abstract VariableType getMeasurement();
-    
+
     public MemoryUnit() {
     }
 
@@ -86,7 +91,7 @@ public abstract class MemoryUnit<T extends DnpVariable> {
 
         @Override
         protected void updateEvent(OutstationChangeSet cs, DnpVariable.AnalogInput variable, EventMode mode) {
-            AnalogInput analogInput = new AnalogInput(variable.getValue(), (byte) AnalogQuality.ONLINE.toType(), variable.getTimeMillis());
+            AnalogInput analogInput = new AnalogInput(variable.getValue(), new Flags((byte) AnalogQuality.ONLINE.toType()), new DNPTime(variable.getTimeMillis()));
             cs.update(analogInput, variable.getIndex(), mode);
 
         }
@@ -106,7 +111,7 @@ public abstract class MemoryUnit<T extends DnpVariable> {
         @Override
         protected void updateEvent(OutstationChangeSet cs, DnpVariable.AnalogOutput variable, EventMode mode) {
 
-            AnalogOutputStatus analogOutputStatus = new AnalogOutputStatus(variable.getValue(), (byte) AnalogOutputStatusQuality.ONLINE.toType(), variable.getTimeMillis());
+            AnalogOutputStatus analogOutputStatus = new AnalogOutputStatus(variable.getValue(), new Flags((byte) AnalogOutputStatusQuality.ONLINE.toType()), new DNPTime(variable.getTimeMillis()));
             cs.update(analogOutputStatus, variable.getIndex(), mode);
 
         }
@@ -126,7 +131,7 @@ public abstract class MemoryUnit<T extends DnpVariable> {
 
         @Override
         protected void updateEvent(OutstationChangeSet cs, DnpVariable.DigitalInput variable, EventMode mode) {
-            BinaryInput binaryInput = new BinaryInput(variable.getValue(), (byte) BinaryQuality.ONLINE.toType(), variable.getTimeMillis());
+            BinaryInput binaryInput = new BinaryInput(variable.getValue(), new Flags((byte) BinaryQuality.ONLINE.toType()),new DNPTime( variable.getTimeMillis()));
             cs.update(binaryInput, variable.getIndex(), mode);
 
         }
@@ -147,7 +152,7 @@ public abstract class MemoryUnit<T extends DnpVariable> {
         @Override
         protected void updateEvent(OutstationChangeSet cs, DnpVariable.DigitalOutput variable, EventMode mode) {
 
-            BinaryOutputStatus binaryOutputStatus = new BinaryOutputStatus(variable.getValue(), (byte) BinaryOutputStatusQuality.ONLINE.toType(), variable.getTimeMillis());
+            BinaryOutputStatus binaryOutputStatus = new BinaryOutputStatus(variable.getValue(), new Flags((byte) BinaryOutputStatusQuality.ONLINE.toType()), new DNPTime(variable.getTimeMillis()));
             cs.update(binaryOutputStatus, variable.getIndex(), mode);
 
         }
@@ -167,7 +172,7 @@ public abstract class MemoryUnit<T extends DnpVariable> {
         @Override
         protected void updateEvent(OutstationChangeSet cs, DnpVariable.Counter variable, EventMode mode) {
 
-            Counter counter = new Counter(variable.getValue(), (byte) CounterQuality.ONLINE.toType(), variable.getTimeMillis());
+            Counter counter = new Counter(variable.getValue(), new Flags((byte) CounterQuality.ONLINE.toType()), new DNPTime(variable.getTimeMillis()));
             cs.update(counter, variable.getIndex(), mode);
 
         }
@@ -189,8 +194,10 @@ public abstract class MemoryUnit<T extends DnpVariable> {
         @Override
         protected void updateEvent(OutstationChangeSet cs, DnpVariable.FrozenCounter variable, EventMode mode) {
 
-            FrozenCounter counter = new FrozenCounter(variable.getValue(), (byte) FrozenCounterQuality.ONLINE.toType(), variable.getTimeMillis());
-            cs.update(counter, variable.getIndex(), mode);
+            FrozenCounter counter = new FrozenCounter(variable.getValue(), new Flags( (byte) FrozenCounterQuality.ONLINE.toType()), new DNPTime(variable.getTimeMillis()));
+            //cs.update(counter, variable.getIndex(), mode);
+            cs.freezeCounter(variable.getIndex(), true, mode);
+            
 
         }
 
@@ -210,7 +217,7 @@ public abstract class MemoryUnit<T extends DnpVariable> {
         @Override
         protected void updateEvent(OutstationChangeSet cs, DnpVariable.DoubleDigital variable, EventMode mode) {
 
-            DoubleBitBinaryInput doubleBitBinaryInput = new DoubleBitBinaryInput(variable.getValue(), (byte) DoubleBitBinaryQuality.ONLINE.ONLINE.toType(), variable.getTimeMillis());
+            DoubleBitBinaryInput doubleBitBinaryInput = new DoubleBitBinaryInput(variable.getValue(), new Flags((byte) DoubleBitBinaryQuality.ONLINE.ONLINE.toType()), new DNPTime(variable.getTimeMillis()));
             cs.update(doubleBitBinaryInput, variable.getIndex(), mode);
 
         }

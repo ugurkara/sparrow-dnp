@@ -18,6 +18,7 @@ package com.sparrow.dnp;
 import com.automatak.dnp3.AnalogOutputStatus;
 import com.automatak.dnp3.BinaryInput;
 import com.automatak.dnp3.BinaryOutputStatus;
+import com.automatak.dnp3.DNPTime;
 import com.automatak.dnp3.DoubleBitBinaryInput;
 import com.automatak.dnp3.Measurement;
 import com.automatak.dnp3.enums.AnalogOutputStatusQuality;
@@ -46,7 +47,7 @@ public abstract class DnpVariable<T, S extends Measurement> {
 
     private T value;
     private final int index;
-    private long time = System.currentTimeMillis();
+    private DNPTime time = new DNPTime(System.currentTimeMillis());
 
     public DnpVariable(int index, T value) {
         this.value = value;
@@ -59,7 +60,7 @@ public abstract class DnpVariable<T, S extends Measurement> {
         return value;
     }
 
-    public void setValue(T newValue, long l) {
+    public void setValue(T newValue, DNPTime l) {
         T oldValue = this.value;
         this.value = newValue;
         this.time = l;
@@ -67,13 +68,13 @@ public abstract class DnpVariable<T, S extends Measurement> {
     }
 
     public void setValue(T newValue) {
-        setValue(newValue, System.currentTimeMillis());
+        setValue(newValue, new DNPTime(System.currentTimeMillis()));
     }
 
     abstract void setObject(S value);
 
     public Long getTimeMillis() {
-        return time;
+        return time.msSinceEpoch;
     }
 
     //Only for test purpose. It will be removed.
@@ -117,7 +118,7 @@ public abstract class DnpVariable<T, S extends Measurement> {
         AnalogInput(int index, com.automatak.dnp3.AnalogInput value) {
             super(index, value.value);
             super.time = value.timestamp;
-            quality = AnalogQuality.fromType(value.quality);
+            quality = AnalogQuality.fromType(value.quality.getValue());
         }
 
         @Override
@@ -128,7 +129,7 @@ public abstract class DnpVariable<T, S extends Measurement> {
         @Override
         void setObject(com.automatak.dnp3.AnalogInput value) {
             setValue(value.value, value.timestamp);
-            quality = AnalogQuality.fromType(value.quality);
+            quality = AnalogQuality.fromType(value.quality.getValue());
         }
 
         static AnalogInput valueOf(VariableConfig.AnalogInputConfig config) {
@@ -159,7 +160,7 @@ public abstract class DnpVariable<T, S extends Measurement> {
         AnalogOutput(int index, AnalogOutputStatus value) {
             super(index, value.value);
             super.time = value.timestamp;
-            quality = AnalogOutputStatusQuality.fromType(value.quality);
+            quality = AnalogOutputStatusQuality.fromType(value.quality.getValue());
             this.selectionRequired = false;
         }
 
@@ -171,7 +172,7 @@ public abstract class DnpVariable<T, S extends Measurement> {
         @Override
         void setObject(AnalogOutputStatus value) {
             setValue(value.value, value.timestamp);
-            quality = AnalogOutputStatusQuality.fromType(value.quality);
+            quality = AnalogOutputStatusQuality.fromType(value.quality.getValue());
         }
 
         static AnalogOutput valueOf(VariableConfig.AnalogOutputConfig config) {
@@ -216,7 +217,7 @@ public abstract class DnpVariable<T, S extends Measurement> {
         DigitalInput(int index, BinaryInput value) {
             super(index, value.value);
             super.time = value.timestamp;
-            quality = BinaryQuality.fromType(value.quality);
+            quality = BinaryQuality.fromType(value.quality.getValue());
         }
 
         @Override
@@ -227,7 +228,7 @@ public abstract class DnpVariable<T, S extends Measurement> {
         @Override
         void setObject(BinaryInput value) {
             setValue(value.value, value.timestamp);
-            quality = BinaryQuality.fromType(value.quality);
+            quality = BinaryQuality.fromType(value.quality.getValue());
         }
 
         static DigitalInput valueOf(VariableConfig.DigitalInputConfig config) {
@@ -260,7 +261,7 @@ public abstract class DnpVariable<T, S extends Measurement> {
         DigitalOutput(int index, BinaryOutputStatus value) {
             super(index, value.value);
             super.time = value.timestamp;
-            quality = BinaryOutputStatusQuality.fromType(value.quality);
+            quality = BinaryOutputStatusQuality.fromType(value.quality.getValue());
             this.selectionRequired = false;
         }
 
@@ -272,7 +273,7 @@ public abstract class DnpVariable<T, S extends Measurement> {
         @Override
         void setObject(BinaryOutputStatus value) {
             setValue(value.value, value.timestamp);
-            quality = BinaryOutputStatusQuality.fromType(value.quality);
+            quality = BinaryOutputStatusQuality.fromType(value.quality.getValue());
         }
 
         static DigitalOutput valueOf(VariableConfig.DigitalOutputConfig config) {
@@ -319,7 +320,7 @@ public abstract class DnpVariable<T, S extends Measurement> {
         Counter(int index, com.automatak.dnp3.Counter value) {
             super(index, value.value);
             super.time = value.timestamp;
-            quality = CounterQuality.fromType(value.quality);
+            quality = CounterQuality.fromType(value.quality.getValue());
         }
 
         @Override
@@ -330,7 +331,7 @@ public abstract class DnpVariable<T, S extends Measurement> {
         @Override
         void setObject(com.automatak.dnp3.Counter value) {
             setValue(value.value, value.timestamp);
-            quality = CounterQuality.fromType(value.quality);
+            quality = CounterQuality.fromType(value.quality.getValue());
         }
 
         static Counter valueOf(VariableConfig.CounterConfig config) {
@@ -357,7 +358,7 @@ public abstract class DnpVariable<T, S extends Measurement> {
         FrozenCounter(int index, com.automatak.dnp3.FrozenCounter value) {
             super(index, value.value);
             super.time = value.timestamp;
-            quality = FrozenCounterQuality.fromType(value.quality);
+            quality = FrozenCounterQuality.fromType(value.quality.getValue());
         }
 
         @Override
@@ -368,7 +369,7 @@ public abstract class DnpVariable<T, S extends Measurement> {
         @Override
         void setObject(com.automatak.dnp3.FrozenCounter value) {
             setValue(value.value, value.timestamp);
-            quality = FrozenCounterQuality.fromType(value.quality);
+            quality = FrozenCounterQuality.fromType(value.quality.getValue());
         }
 
         static FrozenCounter valueOf(VariableConfig.FrozenCounterConfig config) {
@@ -395,7 +396,7 @@ public abstract class DnpVariable<T, S extends Measurement> {
         DoubleDigital(int index, DoubleBitBinaryInput value) {
             super(index, value.value);
             super.time = value.timestamp;
-            quality = DoubleBitBinaryQuality.fromType(value.quality);
+            quality = DoubleBitBinaryQuality.fromType(value.quality.getValue());
         }
 
         @Override
@@ -406,7 +407,7 @@ public abstract class DnpVariable<T, S extends Measurement> {
         @Override
         void setObject(DoubleBitBinaryInput value) {
             setValue(value.value, value.timestamp);
-            quality = DoubleBitBinaryQuality.fromType(value.quality);
+            quality = DoubleBitBinaryQuality.fromType(value.quality.getValue());
         }
 
         static DoubleDigital valueOf(VariableConfig.DoubleDigitalConfig config) {

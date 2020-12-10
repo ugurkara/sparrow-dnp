@@ -17,6 +17,7 @@ package com.sparrow.dnp;
 
 import com.automatak.dnp3.Channel;
 import com.automatak.dnp3.DNP3Manager;
+import com.automatak.dnp3.IPEndpoint;
 import com.automatak.dnp3.LogMasks;
 import com.automatak.dnp3.enums.ServerAcceptMode;
 import com.sparrow.dnp.config.TcpServerChannelConfig;
@@ -42,8 +43,7 @@ public class TcpServerConnection extends BaseConection {
                 config.getName(),
                 LogMasks.NORMAL | LogMasks.APP_COMMS,
                 ServerAcceptMode.CloseExisting,
-                config.getHost(),
-                config.getPort(),
+                new IPEndpoint(config.getHost(), config.getPort()),
                 getChannelListener()
         );
 

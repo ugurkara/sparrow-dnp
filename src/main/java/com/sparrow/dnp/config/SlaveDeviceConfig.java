@@ -16,8 +16,10 @@
 package com.sparrow.dnp.config;
 
 import com.automatak.dnp3.DatabaseConfig;
+import com.automatak.dnp3.NumRetries;
 import com.automatak.dnp3.OutstationStackConfig;
-import com.automatak.dnp3.enums.IndexMode;
+import com.automatak.dnp3.StaticTypeBitField;
+import com.automatak.dnp3.enums.StaticTypeBitmask;
 import java.beans.PropertyChangeListener;
 import java.time.Duration;
 import javax.xml.bind.annotation.XmlElement;
@@ -28,7 +30,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(propOrder = {
     "allowUnsolicited",
-    "indexMode",
+    "numUnsolRetries",
     "maxControlsPerRequest",
     "maxRxFragSize",
     "maxTxFragSize",
@@ -41,17 +43,20 @@ import javax.xml.bind.annotation.XmlType;
 public class SlaveDeviceConfig extends BaseDeviceConfig {
 
     private boolean allowUnsolicited = false;
-    
-    private IndexMode indexMode = IndexMode.Contiguous;
-    
+
+    //private IndexMode indexMode = IndexMode.Contiguous;
     private short maxControlsPerRequest = 16;
-    
+
     private int maxRxFragSize = 2048;
     private int maxTxFragSize = 2048;
 
     private String selectTimeout = "PT10S";
     private String solicitedConfirmTimeout = "PT5S";
     private String unsolicitedConfirmTimeout = "PT5S";
+
+    private boolean noDefferedReadDuringUnsolicitedNullResponse = false;
+
+    private int numUnsolRetries = 0;
 
     @Override
     protected String getDefaultName() {
@@ -69,21 +74,40 @@ public class SlaveDeviceConfig extends BaseDeviceConfig {
         this.pcs.firePropertyChange("allowUnsolicited", oldValue, newValue);
     }
 
-    @XmlElement
-    public IndexMode getIndexMode() {
-        return indexMode;
+    public boolean isNoDefferedReadDuringUnsolicitedNullResponse() {
+        return noDefferedReadDuringUnsolicitedNullResponse;
     }
 
-    public IndexMode indexMode() {
-        return indexMode;
+    public void setNoDefferedReadDuringUnsolicitedNullResponse(Boolean newValue) {
+        Boolean oldValue = this.noDefferedReadDuringUnsolicitedNullResponse;
+        this.noDefferedReadDuringUnsolicitedNullResponse = newValue;
+        this.pcs.firePropertyChange("noDefferedReadDuringUnsolicitedNullResponse", oldValue, newValue);
     }
 
-    public void setIndexMode(IndexMode newValue) {
-        IndexMode oldValue = this.indexMode;
-        this.indexMode = newValue;
-        this.pcs.firePropertyChange("indexMode", oldValue, newValue);
+    public Integer getNumUnsolRetries() {
+        return numUnsolRetries;
     }
 
+    public void setNumUnsolRetries(Integer newValue) {
+        Integer oldValue = this.numUnsolRetries;
+        this.numUnsolRetries = newValue;
+        this.pcs.firePropertyChange("numUnsolRetries", oldValue, newValue);
+    }
+
+//    @XmlElement
+//    public IndexMode getIndexMode() {
+//        return indexMode;
+//    }
+//
+//    public IndexMode indexMode() {
+//        return indexMode;
+//    }
+//
+//    public void setIndexMode(IndexMode newValue) {
+//        IndexMode oldValue = this.indexMode;
+//        this.indexMode = newValue;
+//        this.pcs.firePropertyChange("indexMode", oldValue, newValue);
+//    }
     @XmlElement
     public Short getMaxControlsPerRequest() {
         return maxControlsPerRequest;
@@ -204,13 +228,16 @@ public class SlaveDeviceConfig extends BaseDeviceConfig {
 
         //Setup Outstation
         result.outstationConfig.allowUnsolicited = isAllowUnsolicited();
-        result.outstationConfig.indexMode = indexMode();
+        result.outstationConfig.noDefferedReadDuringUnsolicitedNullResponse = isNoDefferedReadDuringUnsolicitedNullResponse();
+//        result.outstationConfig.indexMode = indexMode();
+        result.outstationConfig.numUnsolRetries = getNumUnsolRetries() == 0 ? NumRetries.Infinite() : NumRetries.Fixed(getNumUnsolRetries());
         result.outstationConfig.maxControlsPerRequest = getMaxControlsPerRequest();
         result.outstationConfig.maxRxFragSize = getMaxRxFragSize();
         result.outstationConfig.maxTxFragSize = getMaxTxFragSize();
         result.outstationConfig.selectTimeout = selectTimeoutDuration();
         result.outstationConfig.solConfirmTimeout = solicitedConfirmTimeoutDuration();
-        result.outstationConfig.unsolRetryTimeout = unsolicitedConfirmTimeoutDuration();
+        result.outstationConfig.unsolConfirmTimeout = unsolicitedConfirmTimeoutDuration();
+        //result.outstationConfig.typesAllowedInClass0 = StaticTypeBitField.from(StaticTypeBitmask.AnalogInput,StaticTypeBitmask.Counter);
         return result;
     }
 }

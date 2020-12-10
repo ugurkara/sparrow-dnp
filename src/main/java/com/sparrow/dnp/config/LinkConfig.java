@@ -29,16 +29,14 @@ import javax.xml.bind.annotation.XmlType;
     "localAddress",
     "remoteAddress",
     "master",
-    "useconfirms",
     "keepAliveTimeout",
-    "responseTimeout",
-    "numRetry",})
+    "responseTimeout"})
 
 public class LinkConfig {
     private int localAddress = 4;
     private int remoteAddress = 3;
-    private int numRetry = 0;
-    private boolean useconfirms = false;
+//    private int numRetry = 0;
+//    private boolean useconfirms = false;
     private boolean master = false;
     private String keepAliveTimeout = "PT1M";
     private String responseTimeout = "PT1S";
@@ -69,16 +67,16 @@ public class LinkConfig {
         this.pcs.firePropertyChange("localAddress", oldValue, newValue);
     }
 
-    @XmlElement
-    public Integer getNumRetry() {
-        return numRetry;
-    }
-
-    public void setNumRetry(Integer newValue) {
-        Integer oldValue = this.numRetry;
-        this.numRetry = newValue;
-        this.pcs.firePropertyChange("numRetry", oldValue, newValue);
-    }
+//    @XmlElement
+//    public Integer getNumRetry() {
+//        return numRetry;
+//    }
+//
+//    public void setNumRetry(Integer newValue) {
+//        Integer oldValue = this.numRetry;
+//        this.numRetry = newValue;
+//        this.pcs.firePropertyChange("numRetry", oldValue, newValue);
+//    }
 
     @XmlElement
     public Boolean isMaster() {
@@ -116,17 +114,17 @@ public class LinkConfig {
     public Duration responseTimeout() {
         return Duration.parse(responseTimeout);
     }
-
-    @XmlElement
-    public Boolean isUseconfirms() {
-        return useconfirms;
-    }
-
-    public void setUseconfirms(Boolean newValue) {
-        Boolean oldValue = this.useconfirms;
-        this.useconfirms = newValue;
-        this.pcs.firePropertyChange("useconfirms", oldValue, newValue);
-    }
+//
+//    @XmlElement
+//    public Boolean isUseconfirms() {
+//        return useconfirms;
+//    }
+//
+//    public void setUseconfirms(Boolean newValue) {
+//        Boolean oldValue = this.useconfirms;
+//        this.useconfirms = newValue;
+//        this.pcs.firePropertyChange("useconfirms", oldValue, newValue);
+//    }
 
     private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
@@ -144,9 +142,9 @@ public class LinkConfig {
         source.remoteAddr = getRemoteAddress();
         source.isMaster = isMaster();
         source.keepAliveTimeout = keepAliveTimeout();
-        source.numRetry = getNumRetry();
+        //source.numRetry = getNumRetry();
         source.responseTimeout = responseTimeout();
-        source.useConfirms = isUseconfirms();
+        //source.useConfirms = isUseconfirms();
     }
 
 }

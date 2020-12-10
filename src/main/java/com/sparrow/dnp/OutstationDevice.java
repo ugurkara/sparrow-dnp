@@ -21,6 +21,7 @@ import com.automatak.dnp3.AnalogOutputInt16;
 import com.automatak.dnp3.AnalogOutputInt32;
 import com.automatak.dnp3.CommandHandler;
 import com.automatak.dnp3.ControlRelayOutputBlock;
+import com.automatak.dnp3.Database;
 import com.automatak.dnp3.OutstationStackConfig;
 import com.automatak.dnp3.enums.CommandStatus;
 import com.automatak.dnp3.enums.OperateType;
@@ -39,7 +40,7 @@ import java.time.ZoneOffset;
 public class OutstationDevice extends BaseDevice {
 
     private final OutstationStackConfig outstationStackConfig;
-    
+
     private final BaseOutstationApplication baseOutstationApplication = new BaseOutstationApplication();
 
     public BaseOutstationApplication getOutstationApplication() {
@@ -136,17 +137,12 @@ public class OutstationDevice extends BaseDevice {
     class DefaultCommandHandler implements CommandHandler {
 
         @Override
-        public void start() {
-
-        }
-
-        @Override
         public void end() {
 
         }
 
         @Override
-        public CommandStatus selectCROB(ControlRelayOutputBlock command, int index) {
+        public CommandStatus select(ControlRelayOutputBlock command, int index) {
 
             boolean containsKey = getDatabase().getDigitalOutputs().getItems().containsKey(index);
 
@@ -161,7 +157,7 @@ public class OutstationDevice extends BaseDevice {
         }
 
         @Override
-        public CommandStatus selectAOI32(AnalogOutputInt32 command, int index) {
+        public CommandStatus select(AnalogOutputInt32 command, int index) {
 
             boolean containsKey = getDatabase().getAnalogOutputs().getItems().containsKey(index);
 
@@ -175,7 +171,7 @@ public class OutstationDevice extends BaseDevice {
         }
 
         @Override
-        public CommandStatus selectAOI16(AnalogOutputInt16 command, int index) {
+        public CommandStatus select(AnalogOutputInt16 command, int index) {
 
             boolean containsKey = getDatabase().getAnalogOutputs().getItems().containsKey(index);
 
@@ -190,23 +186,7 @@ public class OutstationDevice extends BaseDevice {
         }
 
         @Override
-        public CommandStatus selectAOF32(AnalogOutputFloat32 command, int index) {
-
-            boolean containsKey = getDatabase().getAnalogOutputs().getItems().containsKey(index);
-
-            if (containsKey) {
-                DnpVariable.AnalogOutput analogOutput = getDatabase().getAnalogOutputs().getItems().get(index);
-                analogOutput.select();
-                return CommandStatus.SUCCESS;
-
-            }
-
-            return CommandStatus.OUT_OF_RANGE;
-
-        }
-
-        @Override
-        public CommandStatus selectAOD64(AnalogOutputDouble64 command, int index) {
+        public CommandStatus select(AnalogOutputFloat32 command, int index) {
 
             boolean containsKey = getDatabase().getAnalogOutputs().getItems().containsKey(index);
 
@@ -222,14 +202,30 @@ public class OutstationDevice extends BaseDevice {
         }
 
         @Override
-        public CommandStatus operateCROB(ControlRelayOutputBlock command, int index, OperateType opType) {
+        public CommandStatus select(AnalogOutputDouble64 command, int index) {
+
+            boolean containsKey = getDatabase().getAnalogOutputs().getItems().containsKey(index);
+
+            if (containsKey) {
+                DnpVariable.AnalogOutput analogOutput = getDatabase().getAnalogOutputs().getItems().get(index);
+                analogOutput.select();
+                return CommandStatus.SUCCESS;
+
+            }
+
+            return CommandStatus.OUT_OF_RANGE;
+
+        }
+
+        @Override
+        public CommandStatus operate(ControlRelayOutputBlock command, int index, Database database, OperateType opType) {
 
             boolean containsKey = getDatabase().getDigitalOutputs().getItems().containsKey(index);
 
             if (containsKey) {
                 DnpVariable.DigitalOutput digitalOutput = getDatabase().getDigitalOutputs().getItems().get(index);
 
-                switch (command.function) {
+                switch (command.opType) {
 
                     case LATCH_OFF:
                         digitalOutput.setValue(false);
@@ -258,7 +254,7 @@ public class OutstationDevice extends BaseDevice {
         }
 
         @Override
-        public CommandStatus operateAOI32(AnalogOutputInt32 command, int index, OperateType opType) {
+        public CommandStatus operate(AnalogOutputInt32 command, int index, Database database, OperateType opType) {
 
             boolean containsKey = getDatabase().getAnalogOutputs().getItems().containsKey(index);
 
@@ -274,7 +270,7 @@ public class OutstationDevice extends BaseDevice {
         }
 
         @Override
-        public CommandStatus operateAOI16(AnalogOutputInt16 command, int index, OperateType opType) {
+        public CommandStatus operate(AnalogOutputInt16 command, int index, Database database, OperateType opType) {
 
             boolean containsKey = getDatabase().getAnalogOutputs().getItems().containsKey(index);
 
@@ -290,7 +286,7 @@ public class OutstationDevice extends BaseDevice {
         }
 
         @Override
-        public CommandStatus operateAOF32(AnalogOutputFloat32 command, int index, OperateType opType) {
+        public CommandStatus operate(AnalogOutputFloat32 command, int index, Database database, OperateType opType) {
 
             boolean containsKey = getDatabase().getAnalogOutputs().getItems().containsKey(index);
 
@@ -306,7 +302,7 @@ public class OutstationDevice extends BaseDevice {
         }
 
         @Override
-        public CommandStatus operateAOD64(AnalogOutputDouble64 command, int index, OperateType opType) {
+        public CommandStatus operate(AnalogOutputDouble64 command, int index, Database database, OperateType opType) {
 
             boolean containsKey = getDatabase().getAnalogOutputs().getItems().containsKey(index);
 
@@ -318,6 +314,11 @@ public class OutstationDevice extends BaseDevice {
             }
 
             return CommandStatus.OUT_OF_RANGE;
+
+        }
+
+        @Override
+        public void begin() {
 
         }
 

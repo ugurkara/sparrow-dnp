@@ -25,7 +25,7 @@ limitations under the License.
         <dependency>
             <groupId>com.automatak.dnp3</groupId>
             <artifactId>opendnp3-bindings</artifactId>
-            <version>2.4.1-SNAPSHOT</version>
+            <version>3.1.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>javax.xml.bind</groupId>
@@ -68,16 +68,19 @@ limitations under the License.
         </dependency>
     </dependencies>
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>2.3.1</version>
-                <configuration>
-                    <outputDirectory>../Sparrow-HMI-Platform/DNP/release/modules/ext</outputDirectory>
-                </configuration>
-            </plugin>
-        </plugins>
+        <!--
+<plugins>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.3.1</version>
+        <configuration>
+            <outputDirectory>../Sparrow-HMI-Platform/DNP/release/modules/ext</outputDirectory>
+        </configuration>
+    </plugin>
+</plugins>
+        -->
+    
     </build>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

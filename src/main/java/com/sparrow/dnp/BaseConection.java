@@ -51,6 +51,16 @@ public abstract class BaseConection {
     
     private final ChannelListenerAdapter listeners = new ChannelListenerAdapter();
     
+    private final String name;
+
+    public String getName() {
+        return name;
+    }
+
+    
+    
+    
+    
     protected ChannelListener getChannelListener() {
         return listeners;
     }
@@ -80,6 +90,7 @@ public abstract class BaseConection {
 
     public BaseConection(BaseChannelConfig config) {
         this.config = config;
+        this.name=config.getName();
     }
 
     protected void run() throws Exception {
@@ -205,7 +216,7 @@ public abstract class BaseConection {
             masters.add(master);
 
             masterConfig.getScanConfigs().forEach((MasterDeviceConfig.ScanConfig scanConfig) -> {
-                master.addPeriodicScan(scanConfig.duration(), Header.getIntegrity());
+                master.addPeriodicScan(scanConfig.duration(), Header.getIntegrity(),masterDevice);
             });
 
             master.enable();
@@ -221,6 +232,8 @@ public abstract class BaseConection {
         outstations.clear();
 
         for (SlaveDeviceConfig outstationConfig : config.getSlaves()) {
+            
+            
 
             OutstationDevice outstationDevice = OutstationDevice.newDevice(outstationConfig);
             getSlaves().add(outstationDevice);
@@ -288,7 +301,7 @@ public abstract class BaseConection {
 
         for (int i = 0; i < getMasters().size(); i++) {
             Master master = masters.get(i);
-            master.scan(Header.getEventClasses());
+            master.scan(Header.getEventClasses(),getMasters().get(i));
         }
 
     }
@@ -297,7 +310,7 @@ public abstract class BaseConection {
 
         for (int i = 0; i < getMasters().size(); i++) {
             Master master = masters.get(i);
-            master.scan(Header.getIntegrity());
+            master.scan(Header.getIntegrity(),getMasters().get(i));
         }
 
     }

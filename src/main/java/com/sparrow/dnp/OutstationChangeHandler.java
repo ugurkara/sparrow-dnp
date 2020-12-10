@@ -20,7 +20,9 @@ import com.automatak.dnp3.AnalogOutputStatus;
 import com.automatak.dnp3.BinaryInput;
 import com.automatak.dnp3.BinaryOutputStatus;
 import com.automatak.dnp3.Counter;
+import com.automatak.dnp3.DNPTime;
 import com.automatak.dnp3.DoubleBitBinaryInput;
+import com.automatak.dnp3.Flags;
 import com.automatak.dnp3.FrozenCounter;
 import com.automatak.dnp3.Outstation;
 import com.automatak.dnp3.OutstationChangeSet;
@@ -144,7 +146,7 @@ class OutstationChangeHandler {
 
         @Override
         protected void update(OutstationChangeSet changeSet, DnpVariable.AnalogInput variable, EventMode mode) {
-            AnalogInput measurement = new AnalogInput(variable.getValue(), (byte) variable.getQuality().toType(), variable.getTimeMillis());
+            AnalogInput measurement = new AnalogInput(variable.getValue(), new Flags((byte) variable.getQuality().toType()), new DNPTime(variable.getTimeMillis()));
             changeSet.update(measurement, variable.getIndex(), mode);
         }
 
@@ -158,7 +160,7 @@ class OutstationChangeHandler {
 
         @Override
         protected void update(OutstationChangeSet changeSet, DnpVariable.AnalogOutput variable, EventMode mode) {
-            AnalogOutputStatus measurement = new AnalogOutputStatus(variable.getValue(), (byte) variable.getQuality().toType(), variable.getTimeMillis());
+            AnalogOutputStatus measurement = new AnalogOutputStatus(variable.getValue(), new Flags((byte) variable.getQuality().toType()), new DNPTime(variable.getTimeMillis()));
             changeSet.update(measurement, variable.getIndex(), mode);
         }
 
@@ -173,7 +175,7 @@ class OutstationChangeHandler {
         @Override
         protected void update(OutstationChangeSet changeSet, DnpVariable.Counter variable, EventMode mode) {
 
-            Counter measurement = new Counter(variable.getValue(), (byte) variable.getQuality().toType(), variable.getTimeMillis());
+            Counter measurement = new Counter(variable.getValue(), new Flags((byte) variable.getQuality().toType()), new DNPTime(variable.getTimeMillis()));
             changeSet.update(measurement, variable.getIndex(), mode);
 
         }
@@ -189,8 +191,9 @@ class OutstationChangeHandler {
         @Override
         protected void update(OutstationChangeSet changeSet, DnpVariable.FrozenCounter variable, EventMode mode) {
 
-            FrozenCounter measurement = new FrozenCounter(variable.getValue(), (byte) variable.getQuality().toType(), variable.getTimeMillis());
-            changeSet.update(measurement, variable.getIndex(), mode);
+            FrozenCounter measurement = new FrozenCounter(variable.getValue(), new Flags((byte) variable.getQuality().toType()), new DNPTime(variable.getTimeMillis()));
+            //changeSet.update(measurement, variable.getIndex(), mode);
+            changeSet.freezeCounter(variable.getIndex(), true, mode);
 
         }
 
@@ -205,7 +208,7 @@ class OutstationChangeHandler {
         @Override
         protected void update(OutstationChangeSet changeSet, DnpVariable.DigitalInput variable, EventMode mode) {
 
-            BinaryInput measurement = new BinaryInput(variable.getValue(), (byte) variable.getQuality().toType(), variable.getTimeMillis());
+            BinaryInput measurement = new BinaryInput(variable.getValue(), new Flags((byte) variable.getQuality().toType()), new DNPTime(variable.getTimeMillis()));
             changeSet.update(measurement, variable.getIndex(), mode);
 
         }
@@ -221,7 +224,7 @@ class OutstationChangeHandler {
         @Override
         protected void update(OutstationChangeSet changeSet, DnpVariable.DigitalOutput variable, EventMode mode) {
 
-            BinaryOutputStatus measurement = new BinaryOutputStatus(variable.getValue(), (byte) variable.getQuality().toType(), variable.getTimeMillis());
+            BinaryOutputStatus measurement = new BinaryOutputStatus(variable.getValue(), new Flags((byte) variable.getQuality().toType()), new DNPTime(variable.getTimeMillis()));
             changeSet.update(measurement, variable.getIndex(), mode);
 
         }
@@ -237,7 +240,7 @@ class OutstationChangeHandler {
         @Override
         protected void update(OutstationChangeSet changeSet, DnpVariable.DoubleDigital variable, EventMode mode) {
 
-            DoubleBitBinaryInput measurement = new DoubleBitBinaryInput(variable.getValue(), (byte) variable.getQuality().toType(), variable.getTimeMillis());
+            DoubleBitBinaryInput measurement = new DoubleBitBinaryInput(variable.getValue(), new Flags((byte) variable.getQuality().toType()), new DNPTime(variable.getTimeMillis()));
             changeSet.update(measurement, variable.getIndex(), mode);
 
         }

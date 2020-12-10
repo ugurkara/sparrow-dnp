@@ -15,7 +15,6 @@
  */
 package com.sparrow.dnp.config;
 
-import com.automatak.dnp3.enums.ControlCode;
 import com.automatak.dnp3.enums.OperateType;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -35,7 +34,7 @@ public class DigitalCommandConfig {
     private Duration onTime = Duration.ofMillis(500);
     private Duration offTime = Duration.ofMillis(500);
 
-    private ControlCode controlCode = ControlCode.PULSE_ON;
+//    private ControlCode controlCode = ControlCode.PULSE_ON;
 
     private OperateType operateType = OperateType.DirectOperate;
 
@@ -67,17 +66,17 @@ public class DigitalCommandConfig {
     public void setOffTime(String offTime) {
         offTime(Duration.parse(offTime));
     }
-
-    @XmlElement
-    public ControlCode getControlCode() {
-        return controlCode;
-    }
-
-    public void setControlCode(ControlCode newValue) {
-        ControlCode oldValue = this.controlCode;
-        this.controlCode = newValue;
-        pcs.firePropertyChange("controlCode", oldValue, newValue);
-    }
+//
+//    @XmlElement
+//    public ControlCode getControlCode() {
+//        return controlCode;
+//    }
+//
+//    public void setControlCode(ControlCode newValue) {
+//        ControlCode oldValue = this.controlCode;
+//        this.controlCode = newValue;
+//        pcs.firePropertyChange("controlCode", oldValue, newValue);
+//    }
 
     public Duration offTime() {
         return offTime;
